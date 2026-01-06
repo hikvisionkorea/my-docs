@@ -1,0 +1,21 @@
+site_name: HIK 기술 지원 센터
+
+theme:
+  name: material
+  language: ko
+  palette:
+    primary: indigo
+    accent: indigo
+  features:
+    - navigation.tabs  # 메뉴를 상단 탭으로 보여줍니다
+
+nav:
+  - 홈: index.md
+  - 📼 녹화기 가이드:
+      - NVR 초기 설정: 녹화기/setup.md
+      - 비밀번호 찾기: 녹화기/password.md
+      - 재생하기 : 녹화기/재생.md
+  - 🔍 카메라 가이드:
+      - IP 카메라 연결: camera/connect.md
+  - 🎥 영상 자료실:
+      - 유튜브 가이드: video.md
