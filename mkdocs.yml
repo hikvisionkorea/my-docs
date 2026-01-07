@@ -1,4 +1,4 @@
-site_name: HIK 기술 지원 센터
+site_name: HIKVISION 기술 지원 센터
 
 theme:
   name: material
@@ -11,11 +11,17 @@ theme:
 
 nav:
   - 홈: index.md
-  - 📼 녹화기 가이드:
+  - 🔍 비밀번호 초기화 방법:
       - NVR 초기 설정: 녹화기/setup.md
       - 비밀번호 찾기: 녹화기/password.md
       - 재생하기 : 녹화기/재생.md
-  - 🔍 카메라 가이드:
+  - 🔍 Hik-Connect (어플) 사용 방법:
       - IP 카메라 연결: camera/connect.md
-  - 🎥 영상 자료실:
+  - 🔍 NVR & IP 카메라 설정 방법:
+      - 유튜브 가이드: video.md
+  - 🔍 iVMS- 4200 사용 방법:
+      - 유튜브 가이드: video.md
+  - 🔍기능 설정 방법:
+      - 유튜브 가이드: video.md
+  - 🔍설치업자를 위한 Hik-Partner Pro 사용 방법:
       - 유튜브 가이드: video.md
