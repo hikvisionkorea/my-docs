@@ -64,3 +64,24 @@ body, input {
 .md-sidebar--secondary {
   font-size: 0.75rem;
 }
+
+:root {
+  /* 하이크비전 공식 레드에 가까운 딥 레드 (#D50000 또는 #B71C1C) */
+  --md-primary-fg-color:        #D50000; 
+  --md-primary-fg-color--light: #FF1744;
+  --md-primary-fg-color--dark:  #B71C1C;
+  
+  /* 강조색 (링크나 버튼 등) */
+  --md-accent-fg-color:         #D50000;
+}
+
+/* 상단바(Header)가 너무 밝아 보이지 않도록 조정 */
+.md-header {
+  background-color: #BD0000 !important; /* 조금 더 어두운 레드 */
+}
+
+/* 좌측 메뉴 활성화된 글자 색상도 진하게 */
+.md-nav__link--active {
+  color: #D50000 !important;
+  font-weight: 700;
+}
