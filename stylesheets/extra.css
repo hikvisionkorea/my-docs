@@ -7,7 +7,29 @@ body, input {
 
 /* 2. 좌측 메뉴 폭 확장 (기본보다 넓게 조정) */
 :root {
-  --md-sidebar-width: 18rem; /* 기본 12.1rem에서 18rem으로 확장 */
+  /* 1. 좌측 메뉴 폭 설정 (원하시는 만큼 숫자를 키우세요) */
+  /* 기본값: 12.1rem -> 수정 추천: 20rem ~ 25rem */
+  --md-sidebar-width: 22rem; 
+
+  /* 2. 전체 페이지의 최대 폭 설정 (메뉴가 넓어진 만큼 전체도 넓혀줘야 답답하지 않습니다) */
+  /* 기본값: 61rem -> 수정 추천: 75rem ~ 85rem */
+  --md-container-width: 80rem; 
+}
+
+/* 화면이 아주 큰 모니터에서 본문이 너무 한쪽으로 쏠리지 않게 조정 */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    width: var(--md-sidebar-width);
+  }
+  .md-content {
+    margin-left: var(--md-sidebar-width);
+  }
+}
+
+/* 글씨가 너무 붙어 보이지 않도록 메뉴 간격 살짝 추가 */
+.md-nav__link {
+  padding: 0.6em 1rem !important;
+  font-size: 0.8rem; /* 메뉴 글씨가 너무 크면 오히려 지저분하므로 살짝 조절 */
 }
 
 /* 3. 본문 글씨 크기 및 가독성 조절 */
