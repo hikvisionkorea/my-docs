@@ -2967,14 +2967,19 @@
   <h1>테스트</h1>
 
 <p># 테스트</p>
-<p>??? success "녹화기: AVI 형식으로 영상 백업이 안 되는 증상"
-    <strong>원인:</strong> 압축 형식을 <strong>H.265</strong>로 사용할 경우 AVI 백업이 제한됩니다.</p>
-<pre><code>**해결책:** 1. 녹화기 설정에서 압축 형식을 **H.264**로 변경 후 테스트하세요.
-2. 또는 전용 플레이어를 사용하여 MP4/비공식 형식을 변환하세요.
-</code></pre>
-<p>??? info "ACU: HTTPS 포트 변경 가능 여부"
-    - HTTP 80은 수정 가능하지만, <strong>HTTPS는 443으로 고정</strong>되어 수정할 수 없습니다.
-    - 보안 연결이 필요한 경우 CA 인증서를 기기에 등록하여 사용하십시오.</p>
+<details class="success">
+<summary>녹화기: AVI 형식으로 영상 백업이 안 되는 증상</summary>
+<p><strong>원인:</strong> 압축 형식을 <strong>H.265</strong>로 사용할 경우 AVI 백업이 제한됩니다.</p>
+<p><strong>해결책:</strong> 1. 녹화기 설정에서 압축 형식을 <strong>H.264</strong>로 변경 후 테스트하세요.
+2. 또는 전용 플레이어를 사용하여 MP4/비공식 형식을 변환하세요.</p>
+</details>
+<details class="info">
+<summary>ACU: HTTPS 포트 변경 가능 여부</summary>
+<ul>
+<li>HTTP 80은 수정 가능하지만, <strong>HTTPS는 443으로 고정</strong>되어 수정할 수 없습니다.</li>
+<li>보안 연결이 필요한 경우 CA 인증서를 기기에 등록하여 사용하십시오.</li>
+</ul>
+</details>
 <hr />
 
 
