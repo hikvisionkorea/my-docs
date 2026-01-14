@@ -3140,7 +3140,7 @@
 
 
 <style>
-    /* 전체 컨테이너: 모바일과 PC 모두에서 높이를 유지하며 3D 배경을 담습니다. */
+    /* 전체 컨테이너: 3D 배경 영역 */
     #vanta-bg {
         width: 100%;
         height: 450px;
@@ -3156,59 +3156,54 @@
         box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
-    /* ⭐ 중앙 고정 박스: 배경 이미지 위에 완벽하게 고정됩니다. */
-    .fixed-center-box {
+    /* ⭐ 사각형 박스를 없애고 글자만 정중앙에 고정 */
+    .fixed-center-content {
         z-index: 10;
         text-align: center;
-        /* 반투명 유리창 효과 */
-        background: rgba(0, 0, 0, 0.5); 
-        padding: 40px 30px;
-        border-radius: 20px;
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        /* 모바일 대응 너비 설정 */
-        width: 85%;
-        max-width: 480px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        width: 90%;
+        pointer-events: none; /* 마우스 이벤트가 배경(Vanta)에 전달되도록 설정 */
     }
 
     .main-title {
         color: white !important;
-        font-size: 2.2rem !important;
+        font-size: 3.2rem !important; /* 글자 크기를 조금 더 키워 강조 */
         margin: 0 !important;
         border: none !important;
-        font-weight: 800;
+        font-weight: 900;
         letter-spacing: -1px;
+        text-shadow: 0 4px 15px rgba(0,0,0,0.8); /* 박스가 없으므로 가독성을 위해 그림자 추가 */
     }
 
     .sub-title {
-        font-size: 1.2rem;
-        opacity: 0.9;
-        margin-top: 8px;
-        font-weight: 500;
+        font-size: 1.5rem;
+        opacity: 0.95;
+        margin-top: 10px;
+        font-weight: 600;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.8);
     }
 
     .guide-text {
-        font-size: 0.9rem;
-        opacity: 0.6;
-        margin-top: 20px;
-        letter-spacing: 1px;
+        font-size: 1rem;
+        opacity: 0.8;
+        margin-top: 25px;
+        letter-spacing: 2px;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.8);
     }
 
     /* 모바일 글자 크기 조정 */
     @media (max-width: 600px) {
         #vanta-bg { height: 350px; }
-        .main-title { font-size: 1.8rem !important; }
-        .sub-title { font-size: 1rem; }
+        .main-title { font-size: 2.2rem !important; }
+        .sub-title { font-size: 1.1rem; }
+        .guide-text { font-size: 0.85rem; }
     }
 </style>
 
 <div id="vanta-bg">
-    <div class="fixed-center-box">
+    <div class="fixed-center-content">
         <h1 class="main-title">HIKVISION</h1>
         <p class="sub-title">스마트시티 기술 지원 센터</p>
-        <div style="width: 40px; height: 2px; background: #3fbbef; margin: 15px auto; opacity: 0.8;"></div>
+        <div style="width: 50px; height: 3px; background: #3fbbef; margin: 20px auto; box-shadow: 0 0 10px #3fbbef;"></div>
         <p class="guide-text">일반 사용자를 위한 CCTV 통합 가이드</p>
     </div>
 </div>
@@ -3230,10 +3225,9 @@
                 scaleMobile: 1.00,
                 color: 0x3fbbef,
                 backgroundColor: 0x1a1b1e,
-                points: 15.00,
-                maxDistance: 20.00,
-                spacing: 16.00,
-                /* 배경 이미지를 3D 효과와 섞고 싶을 때 추가 옵션 가능 */
+                points: 18.00,     /* 점 개수를 살짝 늘림 */
+                maxDistance: 22.00,
+                spacing: 15.00
             });
             clearInterval(initInterval);
         }
