@@ -3036,33 +3036,8 @@
 </div>
 
 <script>
-var vantaEffect = null;
+// Vanta 효과 초기화 함수
 function initVanta() {
-    if (window.VANTA && window.VANTA.NET) {
-        vantaEffect = window.VANTA.NET({
-            el: "#vanta-bg",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 400.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x3fbbef,
-            backgroundColor: 0x1a1b1e,
-            points: 15.00,
-            maxDistance: 20.00,
-            spacing: 16.00
-        });
-    } else {
-        setTimeout(initVanta, 200);
-    }
-}
-// 문서 로드 완료 후 실행
-document.addEventListener("DOMContentLoaded", initVanta);
-<script>
-// 라이브러리 로딩을 감시하고 실행하는 스크립트
-(function initVanta() {
     if (window.VANTA && window.VANTA.NET) {
         window.VANTA.NET({
             el: "#vanta-bg",
@@ -3080,10 +3055,13 @@ document.addEventListener("DOMContentLoaded", initVanta);
             spacing: 16.00
         });
     } else {
-        // 준비가 안 되었으면 0.1초 후에 다시 확인
-        setTimeout(initVanta, 100);
+        // 라이브러리가 아직 로드 안 됐다면 0.2초 후 재시도
+        setTimeout(initVanta, 200);
     }
-})();
+}
+
+// 페이지 로드 시 실행
+document.addEventListener("DOMContentLoaded", initVanta);
 </script>
 
 <h2 id="_1">📞 고객 지원 안내</h2>
