@@ -463,7 +463,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        👋 안녕하세요.
+        📞 고객 지원 안내
       
     </span>
   </a>
@@ -3033,7 +3033,7 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        👋 안녕하세요.
+        📞 고객 지원 안내
       
     </span>
   </a>
@@ -3057,76 +3057,43 @@
 
 
 
-<style>
-    /* 3D 이미지 배경 영역 스타일 */
-    .bg-container {
-        width: 100%;
-        height: 450px;
-        border-radius: 15px;
-        overflow: hidden;
-        position: relative;
-        margin-bottom: 40px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-
-        /* 배경 이미지 (assets 폴더에 smartcity_bg.jpg 파일 필요) */
-        background-image: url('assets/smartcity_bg.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* 배경 위 어두운 막 */
-    .bg-overlay {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(3px);
-    }
-
-    /* 중앙 콘텐츠 박스 */
-    .content-box {
-        position: relative;
-        z-index: 10;
-        text-align: center;
-        color: white;
-        padding: 20px;
-    }
-
-    .main-title {
-        color: white !important;
-        font-size: 2.8rem;
-        margin: 0;
-        font-weight: 800;
-        text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        letter-spacing: -1px;
-        border-bottom: none !important; /* MkDocs 기본 밑줄 제거 */
-    }
-
-    .sub-text {
-        font-size: 1.2rem;
-        opacity: 0.9;
-        margin-top: 15px;
-        font-weight: 300;
-    }
-</style>
-
-<div class="bg-container">
-    <div class="bg-overlay"></div>
-    <div class="content-box">
-        <h1 class="main-title">HIKVISION 기술 지원</h1>
-        <hr style="width: 50px; border: 2px solid #3fbbef; margin: 25px auto; opacity: 0.8;">
-        <p class="sub-text">일반 사용자를 위한 스마트시티 CCTV 통합 가이드</p>
+<div id="vanta-bg" style="width: 100%; height: 400px; display: flex; align-items: center; justify-content: center; color: white; border-radius: 15px; margin-bottom: 30px; background-color: #1a1b1e; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+    <div style="z-index: 10; text-align: center; background: rgba(0,0,0,0.4); padding: 30px; border-radius: 20px; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.1);">
+        <h1 style="color: white !important; font-size: 2.6rem; margin: 0; border: none !important; font-weight: 800;">HIKVISION</h1>
+        <p style="font-size: 1.2rem; opacity: 0.9; margin-top: 5px;">스마트시티 기술 지원 센터</p>
+        <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 15px;">일반 사용자를 위한 CCTV 통합 가이드</p>
     </div>
 </div>
 
-<h3 id="_1">👋 안녕하세요.</h3>
+<script>
+// 라이브러리 로딩을 감시하고 실행하는 스크립트
+(function initVanta() {
+    if (window.VANTA && window.VANTA.NET) {
+        window.VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 400.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x3fbbef,
+            backgroundColor: 0x1a1b1e,
+            points: 15.00,
+            maxDistance: 20.00,
+            spacing: 16.00
+        });
+    } else {
+        // 준비가 안 되었으면 0.1초 후에 다시 확인
+        setTimeout(initVanta, 100);
+    }
+})();
+</script>
+
+<h2 id="_1">📞 고객 지원 안내</h2>
 <p><strong>HIKVISION 기술 지원센터에 오신 것을 환영합니다.</strong></p>
 <p>하이크비전에서는 좀 더 다양한 서비스를 제공하기 위해 서비스 홈페이지 및 콜센터를 운영하고 있습니다.</p>
-<p><br></p>
 <p>콜센터  / 업무시간 : 오전 9시~ 12시, 점심시간 (12시~ 13시) , 13시~ 17시 30분</p>
 <p>제품 사용중에 문제가 발생하실경우 1811-5998 콜센터로 문의 부탁드립니다.</p>
 <p>오후에는 전화가 몰리는 상황으로 통화가 어려울 수 있습니다.</p>
