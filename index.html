@@ -3349,6 +3349,8 @@
         position: relative;
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        /* 배경이 내비게이션을 덮지 않도록 z-index 설정 */
+        z-index: 1; 
     }
 
     /* ⭐ 사각형 박스를 없애고 글자만 정중앙에 고정 */
@@ -3357,6 +3359,7 @@
         text-align: center;
         width: 90%;
         pointer-events: none; /* 마우스 이벤트가 배경(Vanta)에 전달되도록 설정 */
+        position: relative; /* z-index 적용을 위해 relative 추가 */
     }
 
     .main-title {
@@ -3385,12 +3388,23 @@
         text-shadow: 0 2px 8px rgba(0,0,0,0.8);
     }
 
-    /* 모바일 글자 크기 조정 */
+    /* 모바일 환경 최적화 (글자 크기 및 위치 조정) */
     @media (max-width: 600px) {
-        #vanta-bg { height: 350px; }
-        .main-title { font-size: 2.2rem !important; }
-        .sub-title { font-size: 1.1rem; }
-        .guide-text { font-size: 0.85rem; }
+        #vanta-bg { 
+            height: 350px; 
+            align-items: flex-end; /* 내용을 아래쪽으로 배치하여 상단 메뉴와 겹침 방지 */
+            padding-bottom: 50px;  /* 아래쪽 여백 추가 */
+        }
+        .main-title { 
+            font-size: 2.0rem !important; 
+        }
+        .sub-title { 
+            font-size: 1.0rem; 
+        }
+        .guide-text { 
+            font-size: 0.8rem; 
+            margin-top: 15px;
+        }
     }
 </style>
 
@@ -3420,7 +3434,7 @@
                 scaleMobile: 1.00,
                 color: 0x3fbbef,
                 backgroundColor: 0x1a1b1e,
-                points: 18.00,     /* 점 개수를 살짝 늘림 */
+                points: 18.00,      /* 점 개수를 살짝 늘림 */
                 maxDistance: 22.00,
                 spacing: 15.00
             });
