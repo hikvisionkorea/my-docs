@@ -85,3 +85,40 @@ body, input {
   background-color: rgba(183, 28, 28, 0.08) !important;
   color: #B71C1C !important;
 }
+
+/* ============================================================
+   ★ 하이크비전 로고 크기 강제 조절 (추가분) ★
+   ============================================================ */
+
+/* 1. PC 화면에서 로고 크기 조절 */
+.logo-img {
+    /* 현재 크기의 1/4 수준인 80px~90px로 강제 고정 */
+    width: 90px !important;      
+    max-width: 90px !important;  
+    height: auto !important;
+    
+    /* 위치 및 간격 조절 */
+    display: block;
+    margin: 0 auto 15px auto;
+    
+    /* 어두운 배경 대비 가독성 확보 (흰색 광채 효과) */
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7)) !important;
+    
+    /* 마우스 이벤트 허용 (클릭 등이 필요할 경우) */
+    pointer-events: auto !important; 
+}
+
+/* 2. 모바일 화면에서 로고 크기 조절 (더 작게) */
+@media (max-width: 600px) {
+    .logo-img {
+        width: 65px !important;
+        max-width: 65px !important;
+        margin-bottom: 10px !important;
+    }
+}
+
+/* 3. 3D 배경 내의 텍스트 간격 미세 조정 */
+.sub-title {
+    margin-top: 15px !important;
+    letter-spacing: -0.5px;
+}
