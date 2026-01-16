@@ -3334,6 +3334,8 @@
 
 
 
+  <h1>홈</h1>
+
 <style>
     /* 전체 컨테이너: 3D 배경 영역 */
     #vanta-bg {
@@ -3349,31 +3351,30 @@
         position: relative;
         overflow: hidden;
         box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        /* 배경이 내비게이션을 덮지 않도록 z-index 설정 */
         z-index: 1; 
     }
 
-    /* ⭐ 사각형 박스를 없애고 글자만 정중앙에 고정 */
+    /* 중앙 콘텐츠 영역 */
     .fixed-center-content {
         z-index: 10;
         text-align: center;
         width: 90%;
-        pointer-events: none; /* 마우스 이벤트가 배경(Vanta)에 전달되도록 설정 */
-        position: relative; /* z-index 적용을 위해 relative 추가 */
+        pointer-events: none;
+        position: relative;
     }
 
-    .main-title {
-        color: white !important;
-        font-size: 3.2rem !important; /* 글자 크기를 조금 더 키워 강조 */
-        margin: 0 !important;
-        border: none !important;
-        font-weight: 900;
-        letter-spacing: -1px;
-        text-shadow: 0 4px 15px rgba(0,0,0,0.8); /* 박스가 없으므로 가독성을 위해 그림자 추가 */
+    /* ⭐ 로고 이미지 스타일링 */
+    .logo-img {
+        max-width: 400px; /* PC 기준 로고 크기 */
+        width: 80%;      /* 화면에 따라 유동적으로 조절 */
+        height: auto;
+        margin-bottom: 10px;
+        /* 로고가 더 선명하게 보이도록 그림자 효과 추가 */
+        filter: drop-shadow(0 4px 15px rgba(0,0,0,0.6));
     }
 
     .sub-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         opacity: 0.95;
         margin-top: 10px;
         font-weight: 600;
@@ -3388,18 +3389,17 @@
         text-shadow: 0 2px 8px rgba(0,0,0,0.8);
     }
 
-    /* 모바일 환경 최적화 (글자 크기 및 위치 조정) */
+    /* 모바일 환경 최적화 */
     @media (max-width: 600px) {
         #vanta-bg { 
             height: 350px; 
-            align-items: flex-end; /* 내용을 아래쪽으로 배치하여 상단 메뉴와 겹침 방지 */
-            padding-bottom: 50px;  /* 아래쪽 여백 추가 */
+            align-items: center; /* 모바일에서도 중앙 정렬 */
         }
-        .main-title { 
-            font-size: 2.0rem !important; 
+        .logo-img {
+            max-width: 250px; /* 모바일 로고 크기 축소 */
         }
         .sub-title { 
-            font-size: 1.0rem; 
+            font-size: 1.2rem; 
         }
         .guide-text { 
             font-size: 0.8rem; 
@@ -3410,7 +3410,9 @@
 
 <div id="vanta-bg">
     <div class="fixed-center-content">
-        <h1 class="main-title">HIKVISION</h1>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Hikvision_logo.svg/1280px-Hikvision_logo.svg.png" 
+             class="logo-img" alt="HIKVISION Logo">
+
         <p class="sub-title">기술 지원 센터</p>
         <div style="width: 50px; height: 3px; background: #3fbbef; margin: 20px auto; box-shadow: 0 0 10px #3fbbef;"></div>
         <p class="guide-text">일반 사용자를 위한 CCTV 통합 가이드</p>
@@ -3434,7 +3436,7 @@
                 scaleMobile: 1.00,
                 color: 0x3fbbef,
                 backgroundColor: 0x1a1b1e,
-                points: 18.00,      /* 점 개수를 살짝 늘림 */
+                points: 18.00,
                 maxDistance: 22.00,
                 spacing: 15.00
             });
