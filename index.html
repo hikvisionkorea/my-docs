@@ -3357,25 +3357,25 @@
     /* 중앙 콘텐츠 박스 */
     .fixed-center-content {
         z-index: 10;
-        text-align: center; /* 내부 텍스트 및 이미지 중앙 정렬 */
+        text-align: center;
         width: 100%;
         pointer-events: none;
         position: relative;
         display: flex;
         flex-direction: column;
-        align-items: center; /* 자식 요소들을 세로축 중앙으로 정렬 */
+        align-items: center; /* 자식 요소들을 가로축 중앙으로 정렬 */
     }
 
-    /* ⭐ 로고 이미지: 크기 축소 및 정중앙 고정 */
+    /* ⭐ 로고 이미지: 크기를 120px로 조정 및 중앙 고정 */
     .logo-img {
-        width: 80px !important;      /* 1/4 수준으로 확실히 축소 */
-        max-width: 80px !important;  
+        width: 120px !important;      /* 80px에서 1.5배 키운 120px */
+        max-width: 120px !important;  
         height: auto !important;
         display: block !important;
-        margin: 0 auto 10px auto !important; /* 좌우 마진 auto로 정중앙 배치 */
+        margin: 0 auto 5px auto !important; /* 아래 글자와의 간격을 위해 하단 마진 조정 */
 
-        /* 어두운 배경 대비 가독성을 위한 필터 */
-        filter: drop-shadow(0 0 2px rgba(255,255,255,0.8)); 
+        /* 로고 가독성을 위한 효과 */
+        filter: drop-shadow(0 0 3px rgba(255,255,255,0.8)); 
     }
 
     .sub-title {
@@ -3397,9 +3397,11 @@
     /* 모바일 최적화 */
     @media (max-width: 600px) {
         #vanta-bg { height: 350px; }
-        .logo-img { width: 60px !important; max-width: 60px !important; } 
+        .logo-img { 
+            width: 90px !important;   /* 모바일도 비율에 맞춰 조정 */
+            max-width: 90px !important; 
+        } 
         .sub-title { font-size: 1.2rem; }
-        .guide-text { font-size: 0.8rem; }
     }
 </style>
 
