@@ -3337,81 +3337,120 @@
   <h1>홈</h1>
 
 <style>
-    /* 전체 컨테이너 설정 */
+    /* === 기본 레이아웃 === */
     #vanta-bg {
         width: 100%;
-        height: 500px;
+        height: 550px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
         border-radius: 20px;
-        margin-bottom: 30px;
-        background-color: #000b1a; /* 배경색을 더 깊은 네이비로 변경 */
+        background: radial-gradient(circle at center, #0a1525 0%, #000000 100%); /* 배경 더 깊게 */
         position: relative;
         overflow: hidden;
         box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     }
 
-    /* 중앙 콘텐츠 레이아웃 */
-    .fixed-center-content {
+    .content-wrapper {
         z-index: 10;
-        text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        text-align: center;
         pointer-events: none;
+        perspective: 1000px; /* 3D 효과를 위한 원근감 */
     }
 
-    /* ⭐ 이미지 중앙 배치 및 애니메이션 효과 */
-    .logo-img {
-        width: 180px !important; /* 크기를 좀 더 키워 강조 */
+    /* === 하이크비전 로고 === */
+    .hik-logo {
+        width: 130px !important;
         height: auto !important;
-        display: block !important;
-        margin-bottom: 20px !important;
-
-        /* 빛나는 효과 및 둥실둥실 움직임 애니메이션 */
-        filter: drop-shadow(0 0 15px rgba(63, 187, 239, 0.7));
-        animation: float 3s ease-in-out infinite;
+        margin-bottom: 25px !important; /* 큐브와의 간격 */
+        filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
     }
 
-    @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-15px); }
-        100% { transform: translateY(0px); }
+    /* === ⭐ CSS 3D 큐브 스타일 시작 ⭐ === */
+    .cube-container {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 30px;
+        transform-style: preserve-3d; /* 자식 요소들의 3D 공간 유지 */
+        animation: rotateCube 10s infinite linear; /* 10초마다 한 바퀴 회전 */
     }
 
+    .cube-face {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        /* 면의 스타일: 반투명 푸른색 + 빛나는 테두리 */
+        background: rgba(63, 187, 239, 0.1);
+        border: 2px solid rgba(63, 187, 239, 0.6);
+        box-shadow: 0 0 15px rgba(63, 187, 239, 0.4), inset 0 0 20px rgba(63, 187, 239, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: rgba(63, 187, 239, 0.8);
+        font-weight: bold;
+    }
+
+    /* 각 면의 위치를 조립 */
+    .face-front  { transform: translateZ(60px); }
+    .face-back   { transform: rotateY(180deg) translateZ(60px); }
+    .face-right  { transform: rotateY(90deg) translateZ(60px); }
+    .face-left   { transform: rotateY(-90deg) translateZ(60px); }
+    .face-top    { transform: rotateX(90deg) translateZ(60px); }
+    .face-bottom { transform: rotateX(-90deg) translateZ(60px); }
+
+    /* 큐브 회전 애니메이션 */
+    @keyframes rotateCube {
+        0%   { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+        100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+    }
+    /* === CSS 3D 큐브 스타일 끝 === */
+
+
+    /* === 텍스트 스타일 === */
     .sub-title {
-        font-size: 1.8rem;
+        font-size: 2rem;
         font-weight: 700;
-        margin: 10px 0 !important;
-        letter-spacing: -0.5px;
-        text-shadow: 0 0 20px rgba(63, 187, 239, 0.5);
+        margin: 5px 0 !important;
+        text-shadow: 0 0 15px rgba(63, 187, 239, 0.6);
     }
-
     .guide-text {
-        font-size: 1.1rem;
-        opacity: 0.7;
+        font-size: 1rem;
+        opacity: 0.6;
         letter-spacing: 3px;
-        text-transform: uppercase;
+        margin-top: 10px !important;
     }
-
-    /* 모바일 대응 */
-    @media (max-width: 600px) {
-        #vanta-bg { height: 400px; }
-        .logo-img { width: 130px !important; }
-        .sub-title { font-size: 1.4rem; }
+    .divider {
+        width: 50px;
+        height: 3px;
+        background: #3fbbef;
+        margin: 15px auto;
+        box-shadow: 0 0 10px #3fbbef;
     }
 </style>
 
 <div id="vanta-bg">
-    <div class="fixed-center-content">
-        <img src="https://i.imgur.com/f9ad5d.png" class="logo-img" alt="Technology Cube">
+    <div class="content-wrapper">
+        <img src="logo.png" class="hik-logo" alt="HIKVISION">
 
-        <p class="sub-title">기술 지원 센터</p>
-        <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #3fbbef, #007bff); margin: 10px auto; border-radius: 2px;"></div>
-        <p class="guide-text">INTEGRATED GUIDE FOR USERS</p>
+        <div class="cube-container">
+            <div class="cube-face face-front"></div>
+            <div class="cube-face face-back"></div>
+            <div class="cube-face face-right"></div>
+            <div class="cube-face face-left"></div>
+            <div class="cube-face face-top"></div>
+            <div class="cube-face face-bottom"></div>
+        </div>
+
+        <div style="margin-top: -10px;"> <p class="sub-title">기술 지원 센터</p>
+            <div class="divider"></div>
+            <p class="guide-text">INTEGRATED GUIDE FOR USERS</p>
+        </div>
     </div>
 </div>
 
@@ -3420,7 +3459,7 @@
 
 <script>
 (function() {
-    var initVanta = function() {
+    var checkVanta = setInterval(function() {
         if (window.VANTA && window.VANTA.NET) {
             window.VANTA.NET({
                 el: "#vanta-bg",
@@ -3431,22 +3470,15 @@
                 minWidth: 200.00,
                 scale: 1.00,
                 scaleMobile: 1.00,
-                color: 0x3fbbef,
-                backgroundColor: 0x050a14,
-                points: 12.00,
+                color: 0x3fbbef, // 선 색상
+                backgroundColor: 0x0a1525, // 배경색과 맞춤
+                points: 10.00,
                 maxDistance: 20.00,
-                spacing: 16.00,
-                showDots: false /* 점 대신 선 위주로 깔끔하게 */
+                spacing: 17.00
             });
+            clearInterval(checkVanta);
         }
-    };
-
-    // 로드 확인 후 실행
-    if (document.readyState === 'complete') {
-        initVanta();
-    } else {
-        window.addEventListener('load', initVanta);
-    }
+    }, 100);
 })();
 </script>
 
