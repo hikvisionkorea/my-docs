@@ -3282,13 +3282,13 @@
 <h1 id="_1">🛠️ 문의 답변</h1>
 <details class="success">
 <summary>VLC 플레이어를 통한 멀티캐스트 영상 수신 방법</summary>
-<p><strong>설정 방법:</strong>
-- <code>rtsp://&lt;username&gt;:&lt;password&gt;@&lt;IP address&gt;:&lt;RTSP port&gt;/ISAPI/streaming/channels/101?transportmode=multicast</code>
+<p><strong>설정 방법:</strong><br>
+- rtsp://<username>:<password>@<IP address>:<RTSP port>/ISAPI/streaming/channels/101?transportmode=multicast<br>
 - VLC 설정 -&gt; 입력/코덱 -&gt; Demuxer -&gt; RTP/RTSP의 'RTSP를 통한 RTP 멀티캐스트 강제 선택' 체크</p>
 </details>
 <details class="success">
 <summary>Local Playback 영상 검색되지 않습니다. NO VIDEO FILE FOUND </summary>
-<p><strong>답변:</strong> remote backup 활용 권장
+<p><strong>답변:</strong> remote backup 활용 권장<br>
              같은망 PC에 녹화기 영상 수동 / 자동 백업 프로그램</p>
 </details>
 <details class="success">
@@ -3297,15 +3297,15 @@
 </details>
 <details class="success">
 <summary>카메라에서 송출하는 멀티캐스트 스트림을 PC VLC에서 확인하는 방법</summary>
-<p><strong>답변:</strong> Web 페이지에서 멀티캐스트 사용 설정 및 
-             아래 명령어 사용하면 VLC에서 멀티캐스트 스트림 요청시
-             카메라에서 멀티캐스트 주소로 스트림 송신
+<p><strong>답변:</strong> Web 페이지에서 멀티캐스트 사용 설정 및 <br>
+             아래 명령어 사용하면 VLC에서 멀티캐스트 스트림 요청시<br>
+             카메라에서 멀티캐스트 주소로 스트림 송신<br>
               rtsp://카메라ID:카메라PW@카메라IP:RTSP 포트/ISAPI/streaming/channels/101?transportmode=multicast</p>
 </details>
 <details class="success">
 <summary>리모트 백업프로그램 사용하여 백업시 사진처럼 채널명 대신 33 34 35 이런식으로 되어있는데 의미랑 임의 설정 가능한지 확인</summary>
-<p><strong>답변:</strong> 33 --&gt; 1ch1
-             34--&gt; 2ch
+<p><strong>답변:</strong> 33 --&gt; 1ch1<br>
+             34--&gt; 2ch<br>
              이런 순서로 저장됨, 임의 설정 불가능</p>
 </details>
 <hr />
