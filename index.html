@@ -3337,81 +3337,81 @@
   <h1>홈</h1>
 
 <style>
-    /* 전체 컨테이너 */
+    /* 전체 컨테이너 설정 */
     #vanta-bg {
         width: 100%;
-        height: 450px;
+        height: 500px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        border-radius: 15px;
+        border-radius: 20px;
         margin-bottom: 30px;
-        background-color: #1a1b1e;
+        background-color: #000b1a; /* 배경색을 더 깊은 네이비로 변경 */
         position: relative;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        z-index: 1; 
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     }
 
-    /* 중앙 콘텐츠 박스 */
+    /* 중앙 콘텐츠 레이아웃 */
     .fixed-center-content {
         z-index: 10;
         text-align: center;
-        width: 100%;
-        pointer-events: none;
-        position: relative;
         display: flex;
         flex-direction: column;
-        align-items: center; /* 자식 요소들을 가로축 중앙으로 정렬 */
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
     }
 
-    /* ⭐ 로고 이미지: 크기를 120px로 조정 및 중앙 고정 */
+    /* ⭐ 이미지 중앙 배치 및 애니메이션 효과 */
     .logo-img {
-        width: 120px !important;      /* 80px에서 1.5배 키운 120px */
-        max-width: 120px !important;  
+        width: 180px !important; /* 크기를 좀 더 키워 강조 */
         height: auto !important;
         display: block !important;
-        margin: 0 auto 5px auto !important; /* 아래 글자와의 간격을 위해 하단 마진 조정 */
+        margin-bottom: 20px !important;
 
-        /* 로고 가독성을 위한 효과 */
-        filter: drop-shadow(0 0 3px rgba(255,255,255,0.8)); 
+        /* 빛나는 효과 및 둥실둥실 움직임 애니메이션 */
+        filter: drop-shadow(0 0 15px rgba(63, 187, 239, 0.7));
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
     }
 
     .sub-title {
-        font-size: 1.6rem;
-        opacity: 0.95;
-        margin: 10px 0 5px 0 !important;
-        font-weight: 600;
-        text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 10px 0 !important;
+        letter-spacing: -0.5px;
+        text-shadow: 0 0 20px rgba(63, 187, 239, 0.5);
     }
 
     .guide-text {
-        font-size: 1rem;
-        opacity: 0.8;
-        margin-top: 20px;
-        letter-spacing: 2px;
-        text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+        font-size: 1.1rem;
+        opacity: 0.7;
+        letter-spacing: 3px;
+        text-transform: uppercase;
     }
 
-    /* 모바일 최적화 */
+    /* 모바일 대응 */
     @media (max-width: 600px) {
-        #vanta-bg { height: 350px; }
-        .logo-img { 
-            width: 90px !important;   /* 모바일도 비율에 맞춰 조정 */
-            max-width: 90px !important; 
-        } 
-        .sub-title { font-size: 1.2rem; }
+        #vanta-bg { height: 400px; }
+        .logo-img { width: 130px !important; }
+        .sub-title { font-size: 1.4rem; }
     }
 </style>
 
 <div id="vanta-bg">
     <div class="fixed-center-content">
-        <img src="logo.png" class="logo-img" alt="HIKVISION" style="display: block; margin: 0 auto;">
+        <img src="https://i.imgur.com/f9ad5d.png" class="logo-img" alt="Technology Cube">
 
         <p class="sub-title">기술 지원 센터</p>
-        <div style="width: 50px; height: 3px; background: #3fbbef; margin: 15px auto; box-shadow: 0 0 10px #3fbbef;"></div>
-        <p class="guide-text">일반 사용자를 위한 CCTV 통합 가이드</p>
+        <div style="width: 60px; height: 4px; background: linear-gradient(90deg, #3fbbef, #007bff); margin: 10px auto; border-radius: 2px;"></div>
+        <p class="guide-text">INTEGRATED GUIDE FOR USERS</p>
     </div>
 </div>
 
@@ -3420,29 +3420,33 @@
 
 <script>
 (function() {
-    var count = 0;
-    var initInterval = setInterval(function() {
-        count++;
-        if (window.VANTA && window.VANTA.NET && document.getElementById("vanta-bg")) {
+    var initVanta = function() {
+        if (window.VANTA && window.VANTA.NET) {
             window.VANTA.NET({
                 el: "#vanta-bg",
                 mouseControls: true,
                 touchControls: true,
                 gyroControls: false,
-                minHeight: 350.00,
+                minHeight: 200.00,
                 minWidth: 200.00,
                 scale: 1.00,
                 scaleMobile: 1.00,
                 color: 0x3fbbef,
-                backgroundColor: 0x1a1b1e,
-                points: 18.00,
-                maxDistance: 22.00,
-                spacing: 15.00
+                backgroundColor: 0x050a14,
+                points: 12.00,
+                maxDistance: 20.00,
+                spacing: 16.00,
+                showDots: false /* 점 대신 선 위주로 깔끔하게 */
             });
-            clearInterval(initInterval);
         }
-        if (count > 50) clearInterval(initInterval);
-    }, 100);
+    };
+
+    // 로드 확인 후 실행
+    if (document.readyState === 'complete') {
+        initVanta();
+    } else {
+        window.addEventListener('load', initVanta);
+    }
 })();
 </script>
 
