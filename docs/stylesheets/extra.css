@@ -1,0 +1,124 @@
+/* 1. 전체 글꼴 개선 (Pretendard) */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+body, input {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif !important;
+}
+
+/* 2. 레이아웃 및 너비 설정 */
+:root {
+  /* 진한 하이크비전 레드 (#B71C1C) 적용 */
+  --md-primary-fg-color:        #B71C1C; 
+  --md-primary-fg-color--light: #D50000;
+  --md-primary-fg-color--dark:  #8B0000;
+  --md-accent-fg-color:         #B71C1C;
+
+  /* 메뉴 폭을 넓게 (20rem), 전체 폭도 충분히 (90rem) 확장 */
+  --md-sidebar-width: 20rem; 
+  --md-container-width: 90rem; 
+}
+
+/* 상단 헤더 및 탭 배경색 고정 */
+.md-header, .md-tabs {
+  background-color: #A50000 !important;
+}
+
+/* ★ 추가: 상단 탭 메뉴 2줄(줄바꿈) 설정 ★ */
+.md-tabs__list {
+    display: flex;
+    flex-wrap: wrap;         /* 너비 부족 시 줄바꿈 허용 */
+    height: auto !important;   /* 고정 높이 해제 */
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.md-tabs__item {
+    height: 35px;            /* 메뉴 한 칸의 높이 */
+    display: flex;
+    align-items: center;
+}
+
+.md-tabs__link {
+    font-size: 0.7rem !important; /* 글자 크기 살짝 조정 */
+    margin-top: 0 !important;
+}
+
+/* 3. 본문 찌그러짐 방지 (헤더 높이 가변 대응) */
+.md-main__inner {
+  display: flex;
+  max-width: var(--md-container-width);
+  margin-top: 1rem; /* 2줄 메뉴와 본문 사이 간격 확보 */
+}
+
+/* 상단바가 2줄일 때 본문을 가리지 않도록 위치 조정 */
+.md-header {
+    position: static !important; 
+}
+
+.md-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 4. 본문 및 이미지 디자인 */
+.md-typeset {
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+.md-typeset img {
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  border: 1px solid #f0f0f0;
+  margin: 1.5em 0;
+}
+
+/* 5. 좌측 메뉴 스타일 강조 */
+.md-nav__link {
+  padding: 0.6em 1rem !important;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.md-nav__link--active {
+  font-weight: bold;
+  background-color: rgba(183, 28, 28, 0.08) !important;
+  color: #B71C1C !important;
+}
+
+/* ============================================================
+   ★ 하이크비전 로고 크기 강제 조절 (추가분) ★
+   ============================================================ */
+
+/* 1. PC 화면에서 로고 크기 조절 */
+.logo-img {
+    /* 현재 크기의 1/4 수준인 80px~90px로 강제 고정 */
+    width: 90px !important;      
+    max-width: 90px !important;  
+    height: auto !important;
+    
+    /* 위치 및 간격 조절 */
+    display: block;
+    margin: 0 auto 15px auto;
+    
+    /* 어두운 배경 대비 가독성 확보 (흰색 광채 효과) */
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7)) !important;
+    
+    /* 마우스 이벤트 허용 (클릭 등이 필요할 경우) */
+    pointer-events: auto !important; 
+}
+
+/* 2. 모바일 화면에서 로고 크기 조절 (더 작게) */
+@media (max-width: 600px) {
+    .logo-img {
+        width: 65px !important;
+        max-width: 65px !important;
+        margin-bottom: 10px !important;
+    }
+}
+
+/* 3. 3D 배경 내의 텍스트 간격 미세 조정 */
+.sub-title {
+    margin-top: 15px !important;
+    letter-spacing: -0.5px;
+}
