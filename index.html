@@ -3334,8 +3334,6 @@
 
 
 
-  <h1>홈</h1>
-
 <style>
     /* === 기본 레이아웃 === */
     #vanta-bg {
@@ -3350,7 +3348,7 @@
         position: relative;
         overflow: hidden;
         box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-        perspective: 1200px;
+        perspective: 1500px; /* 원근감 심화 */
     }
 
     .content-wrapper {
@@ -3368,18 +3366,29 @@
     .hik-logo {
         width: 140px !important;
         height: auto !important;
-        margin-bottom: 40px !important;
-        filter: drop-shadow(0 0 8px rgba(63, 187, 239, 0.5));
+        margin-bottom: 50px !important;
+        filter: drop-shadow(0 0 10px rgba(63, 187, 239, 0.8));
     }
 
-    /* === 3D 디지털 큐브 및 텍스트 설정 === */
+    /* === ⭐ 고디테일 3D 디지털 큐브 ⭐ === */
     .digital-cube {
         width: 140px;
         height: 140px;
         position: relative;
         transform-style: preserve-3d;
-        animation: rotateDigitalCube 12s infinite linear;
-        margin-bottom: 40px;
+        animation: rotateDigitalCube 15s infinite linear, floatCube 4s infinite ease-in-out;
+        margin-bottom: 50px;
+    }
+
+    /* 큐브 내부 중심부 빛 (코어) */
+    .digital-cube::before {
+        content: '';
+        position: absolute;
+        top: 20%; left: 20%; width: 60%; height: 60%;
+        background: radial-gradient(circle, #3fbbef, transparent 70%);
+        filter: blur(20px);
+        transform: translateZ(0);
+        opacity: 0.6;
     }
 
     .cube-face {
@@ -3390,25 +3399,30 @@
         align-items: center;
         justify-content: center;
         box-sizing: border-box;
+        /* 유리 재질 및 그리드 배경 */
         background: 
-            linear-gradient(45deg, transparent 40%, rgba(63, 187, 239, 0.4) 45%, rgba(63, 187, 239, 0.1) 50%, transparent 55%),
-            repeating-linear-gradient(0deg, rgba(63, 187, 239, 0.1) 0px, rgba(63, 187, 239, 0.1) 1px, transparent 1px, transparent 10px),
-            repeating-linear-gradient(90deg, rgba(63, 187, 239, 0.1) 0px, rgba(63, 187, 239, 0.1) 1px, transparent 1px, transparent 10px),
-            rgba(10, 21, 37, 0.8);
-        border: 2px solid rgba(63, 187, 239, 0.7);
+            radial-gradient(circle at center, rgba(63, 187, 239, 0.1) 0%, transparent 80%),
+            rgba(10, 21, 37, 0.6);
+        /* 모서리 강조 */
+        border: 1px solid rgba(63, 187, 239, 0.8);
         box-shadow: 
-            inset 0 0 30px rgba(63, 187, 239, 0.3),
-            0 0 20px rgba(63, 187, 239, 0.5);
+            inset 0 0 20px rgba(63, 187, 239, 0.4),
+            0 0 15px rgba(63, 187, 239, 0.2);
+        backdrop-filter: blur(5px);
         backface-visibility: visible;
     }
 
+    /* 큐브 각 면의 텍스트 스타일 */
     .cube-face span {
-        font-family: Arial, sans-serif;
+        font-family: 'Segoe UI', Arial, sans-serif;
         font-weight: 900;
-        font-size: 18px;
+        font-size: 16px;
         color: #ffffff;
         text-shadow: 0 0 10px #3fbbef, 0 0 20px #3fbbef;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
+        /* 텍스트 뒤에 은은한 바코드/회로 패턴 효과 */
+        background: linear-gradient(90deg, transparent, rgba(63, 187, 239, 0.2), transparent);
+        padding: 5px 10px;
     }
 
     /* 면 조립 */
@@ -3419,14 +3433,21 @@
     .face-top    { transform: rotateX(90deg) translateZ(70px); }
     .face-bottom { transform: rotateX(-90deg) translateZ(70px); }
 
+    /* 애니메이션: 회전 */
     @keyframes rotateDigitalCube {
-        0%   { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-        100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+        0%   { transform: rotateX(0deg) rotateY(0deg); }
+        100% { transform: rotateX(360deg) rotateY(360deg); }
+    }
+
+    /* 애니메이션: 공중 부양 */
+    @keyframes floatCube {
+        0%, 100% { margin-top: 0px; }
+        50% { margin-top: -20px; }
     }
 
     /* === 하단 텍스트 스타일 === */
     .sub-title {
-        font-size: 2.5rem; /* 문구가 하나 빠져서 크기를 조금 키웠습니다 */
+        font-size: 2.5rem;
         font-weight: 800;
         margin: 10px 0 !important;
         text-shadow: 0 0 25px rgba(63, 187, 239, 0.8);
@@ -3435,14 +3456,14 @@
         width: 80px;
         height: 4px;
         background: #3fbbef;
-        margin: 20px auto 0; /* 아래 여백 조정 */
+        margin: 20px auto 0;
         box-shadow: 0 0 15px #3fbbef;
     }
 </style>
 
 <div id="vanta-bg">
     <div class="content-wrapper">
-        <img src="logo.png" class="hik-logo" alt="HIKVISION">
+        <h1 class="hik-logo" style="color: #3fbbef; text-shadow: 0 0 10px #3fbbef; font-weight: 900;">HIKVISION</h1>
 
         <div class="digital-cube">
             <div class="cube-face face-front"><span>HIKVISION</span></div>
@@ -3456,7 +3477,7 @@
         <div>
             <p class="sub-title">기술 지원 센터</p>
             <div class="divider"></div>
-            </div>
+        </div>
     </div>
 </div>
 
