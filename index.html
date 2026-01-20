@@ -3362,7 +3362,7 @@
         transform-style: preserve-3d;
     }
 
-    /* === 🚀 사이버네틱 3D 데이터 큐브 🚀 === */
+    /* === 🚀 사이버네틱 3D 데이터 큐브 (수정 버전) 🚀 === */
     .digital-cube {
         width: 160px;
         height: 160px;
@@ -3372,7 +3372,7 @@
         margin-bottom: 60px;
     }
 
-    /* 내부 발광 코어 (이미지의 중심 에너지 표현) */
+    /* 내부 발광 코어 */
     .cube-core {
         position: absolute;
         width: 60px; height: 60px;
@@ -3405,18 +3405,7 @@
         overflow: hidden;
     }
 
-    /* 면 위의 사이버네틱 디테일 (회로 선) */
-    .cube-face::before {
-        content: 'SYSTEM ONLINE';
-        position: absolute;
-        top: 10px; left: 10px;
-        font-size: 8px;
-        color: #3fbbef;
-        letter-spacing: 1px;
-        opacity: 0.6;
-    }
-
-    /* 코너 브래킷 (첨부 이미지의 하이테크 모서리 느낌) */
+    /* 코너 브래킷 (하이테크 프레임) */
     .cube-face::after {
         content: '';
         position: absolute;
@@ -3439,10 +3428,10 @@
         color: #fff;
         text-shadow: 0 0 10px #3fbbef;
         z-index: 2;
-        transform: translateZ(10px); /* 텍스트 돌출 효과 */
+        transform: translateZ(10px);
     }
 
-    /* 면 조립 (160px 큐브에 맞춰 80px 이동) */
+    /* 면 조립 */
     .face-front  { transform: translateZ(80px); }
     .face-back   { transform: rotateY(180deg) translateZ(80px); }
     .face-right  { transform: rotateY(90deg) translateZ(80px); }
@@ -3477,8 +3466,7 @@
 
             <div class="cube-face face-front"><span>HIKVISION</span></div>
             <div class="cube-face face-back"><span>DATA UNIT</span></div>
-            <div class="cube-face face-right"><span>SECURITY</span></div>
-            <div class="cube-face face-left"><span>AI CORE</span></div>
+            <div class="cube-face face-right"><span>HIKVISION</span></div> <div class="cube-face face-left"><span>AI CORE</span></div>
             <div class="cube-face face-top"><span>NETWORK</span></div>
             <div class="cube-face face-bottom"><span>STORAGE</span></div>
         </div>
