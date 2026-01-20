@@ -3334,6 +3334,8 @@
 
 
 
+  <h1>홈</h1>
+
 <style>
     /* === 기본 레이아웃 === */
     #vanta-bg {
@@ -3344,11 +3346,11 @@
         justify-content: center;
         color: white;
         border-radius: 20px;
-        background: radial-gradient(ellipse at center, #0a1525 0%, #020408 100%);
+        background: #020408;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-        perspective: 1500px; /* 원근감 심화 */
+        box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+        perspective: 2000px; /* 원근감 극대화 */
     }
 
     .content-wrapper {
@@ -3357,115 +3359,111 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        text-align: center;
-        pointer-events: none;
         transform-style: preserve-3d;
     }
 
-    /* === 하이크비전 상단 로고 === */
     .hik-logo {
-        width: 140px !important;
-        height: auto !important;
-        margin-bottom: 50px !important;
-        filter: drop-shadow(0 0 10px rgba(63, 187, 239, 0.8));
+        color: #3fbbef;
+        text-shadow: 0 0 15px rgba(63, 187, 239, 0.8);
+        font-weight: 900;
+        font-size: 2rem;
+        margin-bottom: 60px;
+        letter-spacing: 2px;
     }
 
-    /* === ⭐ 고디테일 3D 디지털 큐브 ⭐ === */
+    /* === ⭐ 하이테크 에너지 큐브 시스템 ⭐ === */
     .digital-cube {
-        width: 140px;
-        height: 140px;
+        width: 160px;
+        height: 160px;
         position: relative;
         transform-style: preserve-3d;
-        animation: rotateDigitalCube 15s infinite linear, floatCube 4s infinite ease-in-out;
-        margin-bottom: 50px;
+        animation: rotateCube 18s infinite linear;
+        margin-bottom: 60px;
     }
 
-    /* 큐브 내부 중심부 빛 (코어) */
-    .digital-cube::before {
-        content: '';
+    /* 내부 발광 코어 (이미지의 중심부 빛 효과) */
+    .cube-core {
         position: absolute;
-        top: 20%; left: 20%; width: 60%; height: 60%;
-        background: radial-gradient(circle, #3fbbef, transparent 70%);
-        filter: blur(20px);
+        width: 80px;
+        height: 80px;
+        top: 40px;
+        left: 40px;
+        background: #3fbbef;
+        border-radius: 50%;
+        filter: blur(30px);
+        box-shadow: 0 0 60px #3fbbef;
+        animation: pulseCore 2s infinite ease-in-out;
         transform: translateZ(0);
-        opacity: 0.6;
     }
 
     .cube-face {
         position: absolute;
-        width: 140px;
-        height: 140px;
+        width: 160px;
+        height: 160px;
         display: flex;
         align-items: center;
         justify-content: center;
+        background: rgba(10, 25, 47, 0.4); /* 이미지와 같은 어두운 반투명 */
+        border: 1px solid rgba(63, 187, 239, 0.3); /* 기본 테두리 */
+        backdrop-filter: blur(4px);
         box-sizing: border-box;
-        /* 유리 재질 및 그리드 배경 */
-        background: 
-            radial-gradient(circle at center, rgba(63, 187, 239, 0.1) 0%, transparent 80%),
-            rgba(10, 21, 37, 0.6);
-        /* 모서리 강조 */
-        border: 1px solid rgba(63, 187, 239, 0.8);
-        box-shadow: 
-            inset 0 0 20px rgba(63, 187, 239, 0.4),
-            0 0 15px rgba(63, 187, 239, 0.2);
-        backdrop-filter: blur(5px);
-        backface-visibility: visible;
     }
 
-    /* 큐브 각 면의 텍스트 스타일 */
+    /* 큐브 모서리 하이라이트 (이미지의 밝은 선 표현) */
+    .cube-face::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        border: 3px solid transparent;
+        border-top-color: #3fbbef; /* 모서리 일부만 밝게 */
+        border-left-color: #3fbbef;
+        box-shadow: inset 0 0 25px rgba(63, 187, 239, 0.2);
+    }
+
     .cube-face span {
-        font-family: 'Segoe UI', Arial, sans-serif;
+        font-family: 'Arial Black', sans-serif;
         font-weight: 900;
-        font-size: 16px;
-        color: #ffffff;
-        text-shadow: 0 0 10px #3fbbef, 0 0 20px #3fbbef;
-        letter-spacing: 2px;
-        /* 텍스트 뒤에 은은한 바코드/회로 패턴 효과 */
-        background: linear-gradient(90deg, transparent, rgba(63, 187, 239, 0.2), transparent);
-        padding: 5px 10px;
+        font-size: 14px;
+        color: #fff;
+        text-shadow: 0 0 10px #3fbbef;
+        letter-spacing: 1px;
+        opacity: 0.9;
     }
 
-    /* 면 조립 */
-    .face-front  { transform: translateZ(70px); }
-    .face-back   { transform: rotateY(180deg) translateZ(70px); }
-    .face-right  { transform: rotateY(90deg) translateZ(70px); }
-    .face-left   { transform: rotateY(-90deg) translateZ(70px); }
-    .face-top    { transform: rotateX(90deg) translateZ(70px); }
-    .face-bottom { transform: rotateX(-90deg) translateZ(70px); }
+    /* 6면 조립 */
+    .face-front  { transform: translateZ(80px); }
+    .face-back   { transform: rotateY(180deg) translateZ(80px); }
+    .face-right  { transform: rotateY(90deg) translateZ(80px); }
+    .face-left   { transform: rotateY(-90deg) translateZ(80px); }
+    .face-top    { transform: rotateX(90deg) translateZ(80px); }
+    .face-bottom { transform: rotateX(-90deg) translateZ(80px); }
 
-    /* 애니메이션: 회전 */
-    @keyframes rotateDigitalCube {
-        0%   { transform: rotateX(0deg) rotateY(0deg); }
-        100% { transform: rotateX(360deg) rotateY(360deg); }
+    /* 애니메이션 */
+    @keyframes rotateCube {
+        0% { transform: rotateX(0deg) rotateY(0deg); }
+        100% { transform: rotateX(360deg) rotateY(720deg); }
     }
 
-    /* 애니메이션: 공중 부양 */
-    @keyframes floatCube {
-        0%, 100% { margin-top: 0px; }
-        50% { margin-top: -20px; }
+    @keyframes pulseCore {
+        0%, 100% { transform: scale(1); opacity: 0.6; }
+        50% { transform: scale(1.3); opacity: 0.9; }
     }
 
-    /* === 하단 텍스트 스타일 === */
+    /* 하단 텍스트 */
     .sub-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
         font-weight: 800;
-        margin: 10px 0 !important;
-        text-shadow: 0 0 25px rgba(63, 187, 239, 0.8);
-    }
-    .divider {
-        width: 80px;
-        height: 4px;
-        background: #3fbbef;
-        margin: 20px auto 0;
-        box-shadow: 0 0 15px #3fbbef;
+        text-shadow: 0 0 20px rgba(63, 187, 239, 0.6);
     }
 </style>
 
 <div id="vanta-bg">
     <div class="content-wrapper">
-        <h1 class="hik-logo" style="color: #3fbbef; text-shadow: 0 0 10px #3fbbef; font-weight: 900;">HIKVISION</h1>
+        <div class="hik-logo">HIKVISION</div>
 
         <div class="digital-cube">
+            <div class="cube-core"></div>
+
             <div class="cube-face face-front"><span>HIKVISION</span></div>
             <div class="cube-face face-back"><span>HIKVISION</span></div>
             <div class="cube-face face-right"><span>HIKVISION</span></div>
@@ -3474,10 +3472,7 @@
             <div class="cube-face face-bottom"><span>HIKVISION</span></div>
         </div>
 
-        <div>
-            <p class="sub-title">기술 지원 센터</p>
-            <div class="divider"></div>
-        </div>
+        <p class="sub-title">기술 지원 센터</p>
     </div>
 </div>
 
@@ -3485,29 +3480,18 @@
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 
 <script>
-(function() {
-    var checkVanta = setInterval(function() {
-        if (window.VANTA && window.VANTA.NET) {
-            window.VANTA.NET({
-                el: "#vanta-bg",
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                scale: 1.00,
-                scaleMobile: 1.00,
-                color: 0x3fbbef,
-                backgroundColor: 0x0a1525,
-                points: 12.00,
-                maxDistance: 22.00,
-                spacing: 16.00,
-                showDots: true
-            });
-            clearInterval(checkVanta);
-        }
-    }, 100);
-})();
+    // VANTA 배경 설정 (점과 선의 밀도를 조절하여 이미지의 복잡한 느낌 재현)
+    VANTA.NET({
+        el: "#vanta-bg",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        color: 0x3fbbef,
+        backgroundColor: 0x020408,
+        points: 15.00,
+        maxDistance: 20.00,
+        spacing: 15.00
+    });
 </script>
 
 <h2 id="1811-5998">📞 고객 지원 안내 📞1811-5998</h2>
