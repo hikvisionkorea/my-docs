@@ -3372,7 +3372,7 @@
         filter: drop-shadow(0 0 8px rgba(63, 187, 239, 0.5));
     }
 
-    /* === ⭐ 3D 디지털 큐브 및 텍스트 설정 ⭐ === */
+    /* === 3D 디지털 큐브 및 텍스트 설정 === */
     .digital-cube {
         width: 140px;
         height: 140px;
@@ -3386,9 +3386,9 @@
         position: absolute;
         width: 140px;
         height: 140px;
-        display: flex;         /* 텍스트 중앙 정렬 */
-        align-items: center;   /* 텍스트 중앙 정렬 */
-        justify-content: center; /* 텍스트 중앙 정렬 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
         box-sizing: border-box;
         background: 
             linear-gradient(45deg, transparent 40%, rgba(63, 187, 239, 0.4) 45%, rgba(63, 187, 239, 0.1) 50%, transparent 55%),
@@ -3402,7 +3402,6 @@
         backface-visibility: visible;
     }
 
-    /* 큐브 면에 새겨질 HIKVISION 텍스트 스타일 */
     .cube-face span {
         font-family: Arial, sans-serif;
         font-weight: 900;
@@ -3412,7 +3411,7 @@
         letter-spacing: 1px;
     }
 
-    /* 면 조립 (문구가 정면을 향하도록 설정) */
+    /* 면 조립 */
     .face-front  { transform: translateZ(70px); }
     .face-back   { transform: rotateY(180deg) translateZ(70px); }
     .face-right  { transform: rotateY(90deg) translateZ(70px); }
@@ -3427,22 +3426,16 @@
 
     /* === 하단 텍스트 스타일 === */
     .sub-title {
-        font-size: 2.2rem;
+        font-size: 2.5rem; /* 문구가 하나 빠져서 크기를 조금 키웠습니다 */
         font-weight: 800;
-        margin: 5px 0 !important;
+        margin: 10px 0 !important;
         text-shadow: 0 0 25px rgba(63, 187, 239, 0.8);
     }
-    .guide-text {
-        font-size: 1.1rem;
-        opacity: 0.7;
-        letter-spacing: 4px;
-        margin-top: 15px !important;
-    }
     .divider {
-        width: 70px;
+        width: 80px;
         height: 4px;
         background: #3fbbef;
-        margin: 20px auto;
+        margin: 20px auto 0; /* 아래 여백 조정 */
         box-shadow: 0 0 15px #3fbbef;
     }
 </style>
@@ -3463,8 +3456,7 @@
         <div>
             <p class="sub-title">기술 지원 센터</p>
             <div class="divider"></div>
-            <p class="guide-text">INTEGRATED GUIDE FOR USERS</p>
-        </div>
+            </div>
     </div>
 </div>
 
