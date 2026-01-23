@@ -3240,6 +3240,14 @@
 <strong>답변:</strong> 압축 형식을 <strong>H.265</strong> 사용 시 AVI 형식으로 영상 백업이 불가합니다. <strong>H.264</strong>에서는 정상 동작하므로 설정을 확인해 보시기 바랍니다.</p>
 </details>
 <details class="success">
+<summary>영상 백업시 USB 인식 최대용량</summary>
+<p><strong>답변:</strong> 최대 인식 가능 용량 2TB (NVR및 DVR 동일)</p>
+</details>
+<details class="success">
+<summary>듀얼VCA(Dual-VCA) 기능은 무엇인가요?</summary>
+<p><strong>답변:</strong> 듀얼 VCA는 지능형 사후 검색이라고도 합니다. <br>재생 인터페이스에서 모션 영역, 크로스 라인 규칙 또는 침입 영역을 자유롭게 그려 특정 이벤트가 발생한 동영상 녹화를 빠르게 검색할 수 있어 검색 효율성이 향상됩니다. <br>구현 로직은 다음과 같습니다: 프론트엔드 카메라 비디오 스트림에 VCA 정보가 포함되어야 하고, 백엔드에 이 VCA 정보가 저장되어야 하며, 검색 중에는 사용자가 재생 화면에 규칙 상자를 그립니다. <br>그런 다음 녹화기는 이러한 규칙 상자의 위치 정보와 이전에 저장된 VCA 정보를 알고리즘 라이브러리로 전송하여 비교하고 조건이 충족되면 결과를 출력합니다. <br>이 기능은 스마트 서치 기능에 활용됩니다.</p>
+</details>
+<details class="success">
 <summary>녹화기 실시간 캡처 사진의 저장 위치</summary>
 <p><strong>답변:</strong> 캡처된 사진은 <strong>녹화기의 HDD</strong>에 저장됩니다.</p>
 </details>
@@ -3282,6 +3290,10 @@
 <details class="success">
 <summary>WIFI NVR 카메라 연결이 안됩니다.</summary>
 <p><strong>답변:</strong> 유지(관리) - Wifi 항목에서 연결 장치 신호 세기 확인이 가능합니다.<br>정상 범위 : - 1 dbm~- 80 dbm</p>
+</details>
+<details class="success">
+<summary>VCA는 무엇인가요?.</summary>
+<p><strong>답변:</strong> VCA는 비디오 콘텐츠 분석의 약어입니다. <br>비디오 콘텐츠 분석은 지능형 알고리즘을 사용하여 비디오 영상을 실시간 또는 오프라인으로 분석하여 사람, 차량, 물체 및 그 행동 특성(예: 색상, 크기, 이동 궤적, 이상 행동 등)을 감지, 인식 및 추적하는 등 비디오에서 주요 정보를 자동으로 추출하는 것을 말합니다. <br>대부분의 프론트엔드 카메라는 비디오 스트림에서 VCA 정보를 자동으로 저장할 수 있도록 지원하므로 카메라가 연결되면 녹화기가 스트림에 포함된 VCA 정보를 기반으로 검색 기능을 수행할 수 있습니다.<br>쉽게 말해 이 기능은 카메라 또는 녹화기가 이벤트를 발생시킬때 사용됩니다.</p>
 </details>
 <hr />
 
