@@ -1,0 +1,138 @@
+site_name: HIKVISION 기술 지원 센터
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: 다크 모드로 보기
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: red
+      accent: red
+      toggle:
+        icon: material/brightness-4
+        name: 라이트 모드로 보기
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.tracking
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+# CSS 및 마크다운 확장 설정
+extra_css:
+  - stylesheets/extra.css  # 이 부분이 추가되었습니다!
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js
+  - https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition        # 기본 경고창 기능
+  - pymdownx.details  # 접기/펼치기 기능
+  - pymdownx.superfences # 복잡한 내용을 박스 안에 넣을 때 필요
+
+# 네비게이션 메뉴 설정
+nav:
+  - 홈: index.md
+  - 🔍 자주 묻는 문의:
+      - 🛠️녹화기에서 삐삑삑 삑 삑 (부저음) 소리가 납니다 : 홈페이지/녹화기에서 삐삑삑 삑 삑 (부저음) 소리가 납니다.md
+      - 🛠️스트리밍 채널 수가 한도를 초과했습니다 (대응 방안) : 홈페이지/스트리밍 채널 수가 한도를 초과했습니다 (대응 방안).md
+      - ⭐카메라 질문&답변 : 홈페이지/카메라 질문&답변.md
+      - ⭐녹화기 질문&답변 : 홈페이지/녹화기 질문&답변.md
+      - ⭐사용자 어플(HIK-CONNECT) 질문&답변 : 홈페이지/HIK-CONNECT 질문&답변.md
+      - ⭐TOOL 질문&답변 : 홈페이지/TOOL 질문&답변.md
+      - ⭐ACU 질문&답변 : 홈페이지/ACU 질문&답변.md
+  - 🔍 비밀번호 초기화 방법:
+      - 🔹SADP활용 비밀번호 초기화 방법 : 녹화기/재생.md
+      - 🔹SADP (한국어 버전) 설치 방법: 녹화기/SADP (한국어 버전) 설치 방법.md
+      - 🔹리셋 버튼으로 IP카메라 공장 초기화 하는 방법 : 녹화기/리셋 버튼으로 IP카메라 공장 초기화 하는 방법.md
+  - 🔍 Hik-Connect (어플) 사용 방법:
+      - 🔹Hik Connect 사용자와 영상 공유: camera/Hik Connect 사용자와 영상 공유.md
+      - 🔹Hik Connect그룹 위치 변경: camera/Hik Connect그룹 위치 변경.md
+      - 🔹Hik Connect그룹 이름 편집 및 삭제: camera/Hik Connect그룹 이름 편집 및 삭제.md
+      - 🔹Hik Connect 이벤트 유형별 수신 차단 및 해제 방법: camera/Hik Connect 이벤트 유형별 수신 차단 및 해제 방법.md
+      - 🔹Hik Connect 영상 재생 방법: camera/Hik Connect 영상 재생 방법.md
+      - 🔹Hik Connect 그룹 생성 및 추가: camera/Hik Connect 그룹 생성 및 추가.md
+      - 🔹Hik Connect 알람 수신 및 해제 방법: camera/Hik Connect 알람 수신 및 해제 방법.md
+      - 🔹Hik Connect 서비스 제공업체와 공유: camera/Hik Connect 서비스 제공업체와 공유.md
+      - 🔹Hik-Connect 다운로드 및 회원가입 방법: camera/Hik-Connect 다운로드 및 회원가입 방법.md
+      - 🔹Hik Connect 장비 삭제 방법: camera/Hik Connect 장비 삭제 방법.md
+      - 🔹Hik Connect 양방향 오디오 사용 방법: camera/Hik Connect 양방향 오디오 사용 방법.md
+      - 🔹Hik Connect 사람 차량 인식 방법: camera/Hik Connect 사람 차량 인식 방법.md
+      - 🔹Hik Connect 채널 이름 한글 변경: camera/Hik Connect 채널 이름 한글 변경.md
+      - 🔹Hik Connect 영상 재생 및 저장 사용방법(캡쳐 포함): camera/Hik Connect 영상 재생 및 저장 사용방법(캡쳐 포함).md
+      - 🔹Hik-Connect 활성화 및 장치 등록(QR 스캔): camera/Hik-Connect 활성화 및 장치 등록(QR 스캔).md
+  - 🔍 NVR & IP 카메라 설정:
+      - 🔹ISUP를 이용한 카메라 등록 방법: nvr/ISUP를 이용한 카메라 등록 방법.md
+      - 🔹녹화기 HDD 데이터베이스 복구 방법: nvr/녹화기 HDD 데이터베이스 복구 방법.md
+      - 🔹녹화기 사람 차량 구분 재생 방법 웹페이지: nvr/녹화기 사람 차량 구분 재생 방법 웹페이지.md
+      - 🔹GUI 5 0 실시간 보기 화면 구성 커스텀 방법: nvr/GUI 5 0 실시간 보기 화면 구성 커스텀 방법.md
+      - 🔹녹화 된 영상 백업 클립 방법 웹페이지: nvr/녹화 된 영상 백업 클립 방법 웹페이지.md
+      - 🔹HDD 검사 방법: nvr/HDD 검사 방법.md
+      - 🔹녹화된 영상 검색 기능 활용(파일 , 이벤트)방법-웹페이지: nvr/녹화된 영상 검색 기능 활용(파일 , 이벤트)방법-웹페이지.md
+      - 🔹녹화기 녹화 스케줄 변경(이벤트 녹화 설정)방법-웹페이지: nvr/녹화기 녹화 스케줄 변경(이벤트 녹화 설정)방법-웹페이지.md
+      - 🔹인증 코드 (스트림 암호화 코드) 확인 방법 - 웹페이지: nvr/인증 코드 (스트림 암호화 코드) 확인 방법 - 웹페이지.md
+      - 🔹녹화기 시간 설정(수동시간 동기화, NTP)- 웹페이지: nvr/녹화기 시간 설정(수동시간 동기화, NTP)- 웹페이지.md
+      - 🔹펌웨어 업데이트 방법 -웹페이지: nvr/펌웨어 업데이트 방법 -웹페이지.md
+      - 🔹시간 설정 (수동 시간 동기화, NTP): nvr/시간 설정 (수동 시간 동기화, NTP).md
+      - 🔹녹화기 부저음 끄는 방법HDD 예외 이벤트: nvr/녹화기 부저음 끄는 방법HDD 예외 이벤트.md
+      - 🔹DS-2xxx IP카메라 한글 OSD적용 방법: nvr/DS-2xxx IP카메라 한글 OSD적용 방법.md
+      - 🔹녹화된 영상 검색 기능 활용파일 , 이벤트: nvr/녹화된 영상 검색 기능 활용파일 , 이벤트.md
+      - 🔹Wi-Fi카메라 등록방법(Wi-Fi 녹화기): nvr/Wi-Fi카메라 등록방법(Wi-Fi 녹화기).md
+      - 🔹재생 파일 만료 시간 설정 방법: nvr/재생 파일 만료 시간 설정 방법.md
+      - 🔹녹화기 HDD 초기화 방법: nvr/녹화기 HDD 초기화 방법.md
+      - 🔹녹화기 초기 구성 설정 방법 및 카메라 수동 추가: nvr/녹화기 초기 구성 설정 방법 및 카메라 수동 추가.md
+      - 🔹HDD 장착 하는 방법: nvr/HDD 장착 하는 방법.md
+      - 🔹와이파이 카메라 신호세기 측정dbm: nvr/와이파이 카메라 신호세기 측정dbm.md
+      - 🔹바인딩 해제 방법 (녹화기 모니터): nvr/바인딩 해제 방법 (녹화기 모니터).md
+      - 🔹녹화된 영상 백업 클립: nvr/녹화된 영상 백업 클립.md
+      - 🔹사람 차량 구분 재생 (녹화기 화면): nvr/사람 차량 구분 재생 (녹화기 화면).md
+      - 🔹스트림 암호화 코드 (인증코드)확인 방법: nvr/스트림 암호화 코드 (인증코드)확인 방법.md
+      - 🔹녹화 스케줄 변경(이벤트 녹화 설정): nvr/녹화 스케줄 변경(이벤트 녹화 설정).md
+  - 🔍 iVMS- 4200 사용 방법:
+      - 🔹iVMS-4200 영상 백업: 4200/iVMS-4200 영상 백업.md
+      - 🔹iVMS- 4200 계정 만들기: 4200/iVMS- 4200 계정 만들기.md
+      - 🔹iVMS- 4200 다운로드 설치 및 한글 적용: 4200/iVMS- 4200 다운로드 설치 및 한글 적용.md
+      - 🔹4200 장치 등록 방법(HC 계정 로그인, IP domain 방식): 4200/4200 장치 등록 방법(HC 계정 로그인, IP domain 방식).md
+  - 🔍기능 설정:
+      - 🔹텐텀뷰 카메라 스마트 연동 기능 설정 방법 이벤트 객체 추적: 기능/텐텀뷰 카메라 스마트 연동 기능 설정 방법 이벤트 객체 추적.md
+      - 🔹녹화일 수 계산 하는 방법. HiToolsDesigner 사용: 기능/녹화일 수 계산 하는 방법. HiToolsDesigner 사용.md
+      - 🔹RTSP 활용 방법: 기능/RTSP 활용 방법.md
+      - 🔹카메라 ONVIF 기능 설정 및 테스트: 기능/카메라 ONVIF 기능 설정 및 테스트.md
+      - 🔹장비 IP 필터(허용, 차단) 설정 방법: 기능/장비 IP 필터(허용, 차단) 설정 방법.md
+      - 🔹플리커(깜박이거나 줄이 올라오는 증상) 해결 방법. 밴딩 방지 Antibanding: 기능/플리커(깜박이거나 줄이 올라오는 증상) 해결 방법. 밴딩 방지 Antibanding.md
+      - 🔹영역 진입 감지 기능 설정: 기능/영역 진입 감지 기능 설정.md
+      - 🔹영역 이탈 감지 설정: 기능/영역 이탈 감지 설정.md
+      - 🔹라인크로싱 이벤트 설정: 기능/라인크로싱 이벤트 설정.md
+      - 🔹웹5.0에서 텐덤뷰 카메라의 파노라마 추적을 구성하는 방법: 기능/웹5.0에서 텐덤뷰 카메라의 파노라마 추적을 구성하는 방법.md
+  - 🔍설치업자를 위한 HPP 방법:
+      - 🔹Hik Partner Pro 이메일로 비밀번호 변경하는 방법: 설치업자/Hik Partner Pro 이메일로 비밀번호 변경하는 방법.md
+      - 🔹Hik Partner Pro에서 비밀번호 초기화1 SADP 방식LAN 장비: 설치업자/Hik Partner Pro에서 비밀번호 초기화1 SADP 방식LAN 장비.md
+      - 🔹Hik Partner Pro에서 비밀번호 초기화3 Hik Connect 전달 방식: 설치업자/Hik Partner Pro에서 비밀번호 초기화3 Hik Connect 전달 방식.md
+      - 🔹Hik Partner Pro 사이트 및 장비 추가 양도를 통한 인계모바일 APP: 설치업자/Hik Partner Pro 사이트 및 장비 추가 양도를 통한 인계모바일 APP.md
+      - 🔹Hik Partner Pro에서 최신 펌웨어 검색 & 다운로드모바일 APP: 설치업자/Hik Partner Pro에서 최신 펌웨어 검색 & 다운로드모바일 APP.md
+      - 🔹Hik Partner Pro 사이트 및 장비 추가 공유를 통한 인계모바일 APP: 설치업자/Hik Partner Pro 사이트 및 장비 추가 공유를 통한 인계모바일 APP.md
+      - 🔹Hik Partner Pro SADP 장비 활성화 모바일 APP: 설치업자/Hik Partner Pro SADP 장비 활성화 모바일 APP.md
+      - 🔹Hik Partner Pro에서 비밀번호 초기화2 근처 장비 스캐닝 방식: 설치업자/Hik Partner Pro에서 비밀번호 초기화2 근처 장비 스캐닝 방식.md
+      - 🔹HPP (Hik Partner Pro)에서 최신 펌웨어 검색 & 다운로드(web): 설치업자/HPP (Hik Partner Pro)에서 최신 펌웨어 검색 & 다운로드(web).md
+      - 🔹HPP (Hik Partner Pro)에서 상태 모니터링 (APP): 설치업자/HPP (Hik Partner Pro)에서 상태 모니터링 (APP).md
+      - 🔹HPP(Hik Partner Pro) 사이트 및 장비 추가 양도를 통한 인계(web): 설치업자/HPP(Hik Partner Pro) 사이트 및 장비 추가 양도를 통한 인계(web).md
+      - 🔹Hik Partner Pro 사이트 및 장비 추가 공유를 통한 인계PC 웹: 설치업자/Hik Partner Pro 사이트 및 장비 추가 공유를 통한 인계PC 웹.md
+      - 🔹Hik Partner Pro 계정 생성 및 업체 인증 방법: 설치업자/Hik Partner Pro 계정 생성 및 업체 인증 방법.md
+  - 🔍 기능 시연:
+      - 🔹컬러뷰 VS 핸드폰 야간 효과 - 복도: 시연/컬러뷰 VS 핸드폰 야간 효과 - 복도.md
+      - 🔹컬러뷰 VS 핸드폰 야간 효과 - 야외: 시연/컬러뷰 VS 핸드폰 야간 효과 - 야외.md
+      - 🔹컬러뷰 VS 핸드폰 야간 효과 - 연못: 시연/컬러뷰 VS 핸드폰 야간 효과 - 연못.md
+      - 🔹컬러뷰 VS 핸드폰 야간 효과 - 주차장: 시연/컬러뷰 VS 핸드폰 야간 효과 - 주차장.md
+
