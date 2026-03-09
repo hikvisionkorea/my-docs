@@ -3397,6 +3397,12 @@
 <p><strong>답변:</strong> DORI 개념의 정의<br>카메라가 '얼마나 멀리 볼 수 있는가'에 대한 객관적인 정의를 위해 도입된 국제 표준(EN 62676-4) 기준입니다.<br>이미지의 픽셀 밀도(Pixel Density)에 따라 4단계로 구분됩니다.<br><br>단계,구분,픽셀 밀도,설명<br>✅Detection(감지) , 25 px/m, 화면에 대상이 있다는 것을 인지할 수 있는 수준<br>✅Observation(관찰) , 63 px/m, 의복의 특징 등 일반적인 특징을 포함한 관찰 가능<br>✅Recognition(인식) , 125 px/m, 이전의 기억과 대조하여 동일인인지 식별 가능한 수준<br>✅Identification(식별) , 250 px/m, 개인의 신원을 확신할 수 있는 충분한 정보 제공 (안면 인식 등)<br>🔹Acusense기능은 최소 Observation(관찰), Recognition(인식)이라고 보시면 됩니다<br><a href="../../dori.png">참고 이미지</a></p>
 </details>
 <details class="success">
+<summary>IPC 동시 라이브뷰 스펙</summary>
+<p><strong>답변:</strong> ✅동시 라이브뷰란 카메라에서 클라이언트쪽으로 전송할 수 있는 스트림의 개수를 의미합니다.<br></p>
+</details>
+<p>1/2 시리즈 IPC는 대역폭 이내 최대 동시 접속 수는 6채널  Simultaneous Live View (6대 아니고 채널기준이라 메인,서브 2개씩 가져가므로 결국 3대에서 가능)<br>
+4/6 시리즈 IPC는 대역폭 이내 최대 동시 접속 수는 20채널 Simultaneous Live View</p>
+<details class="success">
 <summary>CVBS에서 NTSC/PAL 변환 방법</summary>
 <p><strong>답변:</strong> TVI 모드에서 (예: 2MP 25FPS(PAL) / 30FPS(NTSC))와 같이 프레임 선택 후 CVBS 모드로 변경하면 적용됩니다.</p>
 </details>
@@ -3445,10 +3451,24 @@
 <p><strong>답변:</strong> 카메라 전력 부족 시 발생하는 아이콘입니다.</p>
 </details>
 <details class="success">
-<summary>로그인 잠금 동작 방식 문의</summary>
-<p><strong>문의:</strong> A PC에서 잘못된 비밀번호로 7회 이상 로그인을 시도하여 잠긴 상태이나, B 라는 동일 서브넷의 다른 PC에서는 정상로그인 가능한 상황?
-<strong>답변:</strong> 잠금 동작은 로그인을 시도했던 대상(PC, 클라이언트 등)에 대해 잠금을 하는 것입니다. (맥어드레스 및 IP 주소정보가 포함됨), 다른 유저들에게는 장비가 잠기지 않음</p>
+<summary>영상 출력 전환스위치 (4in1, 포인원)</summary>
+<p><strong>답변:</strong> 4in1 이란 카메라의 영상 출력 방식을 전환스위치를 통해 TVI,AHD,CVBS,CVI로 변환할 수 있는 기능을 의미합니다.<br></p>
 </details>
+<p>카메라를 타사녹화기가 지원하는 영상 출력방식을 변경하여 카메라의 호환성을 높일 수 있습니다.<br>
+만약 5MP 카메라에서 출력 전환 스위치를 눌러도 반응이 없는 경우 OSD설정에서 메인메뉴&gt; 비디오포맷에서 4MP로 해상도 낮춘 후 시도<br>
+✅OSD 메뉴 진입방법<br>
+PTZ 제어 메뉴에서 프리셋95 OSD 진입, OSD 설정은 TVI방식일때만 진입가능</p>
+<details class="success">
+<summary>회전모드(Rotate Mode)</summary>
+<p><strong>답변:</strong> 회전 모드, 16:9로 나오는 영상을 9:16 으로 변경하여 출력하는 기능, 혹은 영상의 반전 기능을 의미</p>
+</details>
+<details class="success">
+<summary>발룬이란?</summary>
+<p><strong>답변:</strong> 발룬(Balanced + Unbalanced의 합성어)은 동축 케이블(Coaxial, 불평형 신호)과 UTP 케이블(트위스트 페어, 평형 신호) 사이에서 신호를 변환해주는 장치<br></p>
+</details>
+<p>즉, 영상 신호 전송 방식을 변환해주는 어댑터입니다.<br>
+발룬을 사용하는 이유는 기존 아날로그 CCTV는 보통 동축 케이블(RG-59)을 사용합니다.<br>
+하지만 UTP 케이블(LAN 케이블)이 더 저렴하고 배선이 편리하기 때문에, 동축 대신 UTP로 영상 신호를 보내기 위해 발룬을 사용합니다.</p>
 <hr />
 
 
