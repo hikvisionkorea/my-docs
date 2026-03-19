@@ -3561,10 +3561,12 @@
   <h1>홈</h1>
 
 <style>
-    /* === 인덱스 전용 비주얼 레이아웃 === */
+    /* === 인덱스 비주얼 섹션 최적화 === */
     #vanta-bg {
         width: 100%;
-        height: 600px;
+        height: 50vh; /* 화면 높이의 50%로 유연하게 조절 */
+        min-height: 400px;
+        max-height: 550px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -3573,9 +3575,9 @@
         background: radial-gradient(circle at center, #0a1b35 0%, #020408 100%);
         position: relative;
         overflow: hidden;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         perspective: 2000px;
-        margin-bottom: 40px; /* 하단 콘텐츠와의 간격 확보 (떨림 방지) */
+        margin-bottom: 80px; /* 본문과의 확실한 간격 확보 */
     }
 
     .content-wrapper {
@@ -3587,112 +3589,91 @@
         transform-style: preserve-3d;
     }
 
-    /* === 🚀 6면 HIKVISION 사이버네틱 큐브 🚀 === */
+    /* === 사이버네틱 큐브 (크기 최적화) === */
     .digital-cube {
-        width: 160px;
-        height: 160px;
+        width: 140px;
+        height: 140px;
         position: relative;
         transform-style: preserve-3d;
         animation: rotateCyberCube 20s infinite linear;
-        margin-bottom: 60px;
+        margin-bottom: 40px;
     }
 
     .cube-core {
         position: absolute;
-        width: 60px; height: 60px;
-        top: 50px; left: 50px;
+        width: 50px; height: 50px;
+        top: 45px; left: 45px;
         background: #fff;
         border-radius: 50%;
-        filter: blur(20px);
-        box-shadow: 0 0 60px #3fbbef, 0 0 100px #fff;
+        filter: blur(15px);
+        box-shadow: 0 0 50px #3fbbef, 0 0 80px #fff;
         opacity: 0.9;
         animation: corePulse 0.1s infinite alternate;
     }
 
     .cube-face {
         position: absolute;
-        width: 160px;
-        height: 160px;
+        width: 140px;
+        height: 140px;
         display: flex;
         align-items: center;
         justify-content: center;
         box-sizing: border-box;
         background: 
-            linear-gradient(rgba(63, 187, 239, 0.2) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(63, 187, 239, 0.2) 1px, transparent 1px),
-            rgba(10, 25, 47, 0.85);
-        background-size: 20px 20px;
-        border: 2px solid rgba(63, 187, 239, 0.6);
-        backdrop-filter: blur(5px);
+            linear-gradient(rgba(63, 187, 239, 0.15) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(63, 187, 239, 0.15) 1px, transparent 1px),
+            rgba(10, 25, 47, 0.8);
+        background-size: 15px 15px;
+        border: 1.5px solid rgba(63, 187, 239, 0.5);
+        backdrop-filter: blur(4px);
         overflow: hidden;
-        animation: electricBorder 3s infinite; 
-    }
-
-    .cube-face::before {
-        content: '';
-        position: absolute;
-        top: -50%; left: -50%;
-        width: 200%; height: 200%;
-        background: linear-gradient(transparent, rgba(255, 255, 255, 0.8), transparent);
-        transform: rotate(45deg);
-        animation: scanline 4s infinite linear;
-        opacity: 0;
     }
 
     .cube-face span {
         font-family: 'Courier New', monospace;
         font-weight: 900;
-        font-size: 18px;
+        font-size: 16px;
         color: #fff;
         text-shadow: 0 0 5px #3fbbef;
-        z-index: 2;
-        transform: translateZ(20px);
-        animation: textFlicker 4s infinite;
+        transform: translateZ(15px);
     }
 
-    /* 면 조립 */
-    .face-front  { transform: translateZ(80px); }
-    .face-back   { transform: rotateY(180deg) translateZ(80px); }
-    .face-right  { transform: rotateY(90deg) translateZ(80px); }
-    .face-left   { transform: rotateY(-90deg) translateZ(80px); }
-    .face-top    { transform: rotateX(90deg) translateZ(80px); }
-    .face-bottom { transform: rotateX(-90deg) translateZ(80px); }
+    /* 면 조립 (140px 기준 70px 이동) */
+    .face-front  { transform: translateZ(70px); }
+    .face-back   { transform: rotateY(180deg) translateZ(70px); }
+    .face-right  { transform: rotateY(90deg) translateZ(70px); }
+    .face-left   { transform: rotateY(-90deg) translateZ(70px); }
+    .face-top    { transform: rotateX(90deg) translateZ(70px); }
+    .face-bottom { transform: rotateX(-90deg) translateZ(70px); }
 
-    /* 애니메이션 */
     @keyframes rotateCyberCube {
-        0%   { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-        100% { transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg); }
-    }
-    @keyframes electricBorder {
-        0%, 100% { box-shadow: 0 0 5px #3fbbef; border-color: rgba(63, 187, 239, 0.6); }
-        2% { box-shadow: 0 0 30px #fff; border-color: #fff; }
-        4% { box-shadow: 0 0 5px #3fbbef; border-color: rgba(63, 187, 239, 0.6); }
+        0%   { transform: rotateX(0deg) rotateY(0deg); }
+        100% { transform: rotateX(360deg) rotateY(720deg); }
     }
     @keyframes corePulse {
-        0% { transform: scale(0.95); opacity: 0.8; }
-        100% { transform: scale(1.05); opacity: 1; }
-    }
-    @keyframes scanline {
-        0% { top: -100%; opacity: 0; }
-        40% { top: 200%; opacity: 0; }
-    }
-    @keyframes textFlicker {
-        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; text-shadow: 0 0 10px #3fbbef; }
-        20%, 24%, 55% { opacity: 0.5; text-shadow: none; }
+        0% { transform: scale(0.98); opacity: 0.8; }
+        100% { transform: scale(1.02); opacity: 1; }
     }
 
     .sub-title-main {
-        font-size: 2.5rem;
+        font-size: 2rem;
         font-weight: 800;
-        text-shadow: 0 0 25px rgba(63, 187, 239, 0.8);
-        margin-top: 20px;
+        text-shadow: 0 0 20px rgba(63, 187, 239, 0.6);
+        margin-top: 10px;
         color: #fff;
+    }
+
+    /* === 하단 떨림 방지 섹션 === */
+    .content-footer-spacer {
+        height: 100px;
+        width: 100%;
+        display: block;
     }
 </style>
 
 <div id="vanta-bg">
     <div class="content-wrapper">
-        <img src="logo.png" style="width:160px; margin-bottom:50px; filter: drop-shadow(0 0 10px #3fbbef);" alt="HIKVISION">
+        <img src="logo.png" style="width:130px; margin-bottom:30px; filter: drop-shadow(0 0 8px #3fbbef);" alt="HIKVISION">
 
         <div class="digital-cube">
             <div class="cube-core"></div>
@@ -3719,9 +3700,9 @@
         gyroControls: false,
         color: 0x3fbbef,
         backgroundColor: 0x020408,
-        points: 14.00,
-        maxDistance: 20.00,
-        spacing: 16.00
+        points: 12.00,
+        maxDistance: 22.00,
+        spacing: 18.00
     });
 </script>
 
