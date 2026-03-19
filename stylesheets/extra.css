@@ -1,45 +1,111 @@
-/* 1. 레이아웃 및 너비 설정 (사용자님 설정값 반영) */
+/* 1. 전체 글꼴 및 기본 설정 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+body, input {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif !important;
+}
+
+/* 2. 레이아웃 및 너비 최적화 */
 :root {
+  /* 하이크비전 브랜드 컬러 */
   --md-primary-fg-color:        #B71C1C; 
   --md-primary-fg-color--light: #D50000;
   --md-primary-fg-color--dark:  #8B0000;
   --md-accent-fg-color:          #B71C1C;
 
-  /* 좌측을 35rem으로 넓히고 전체 폭을 105rem으로 확장 */
-  --md-sidebar-width: 35rem !important; 
+  /* [수정] 메뉴가 너무 밀리지 않도록 28rem으로 조정, 전체 폭은 105rem으로 균형 확보 */
+  --md-sidebar-width: 28rem !important; 
   --md-container-width: 105rem !important; 
 }
 
-/* 2. [추가] 좌측 사이드바가 35rem을 다 쓰도록 강제 고정 */
+/* 상단 헤더 및 탭 디자인 유지 */
+.md-header, .md-tabs {
+  background-color: #A50000 !important;
+}
+
+/* 상단 탭 메뉴 줄바꿈 설정 유지 */
+.md-tabs__list {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.md-tabs__item {
+    height: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.md-tabs__link {
+    font-size: 0.7rem !important;
+    margin-top: 0 !important;
+}
+
+/* 3. 본문 위치 및 간격 조정 (너무 우측으로 밀리는 현상 방지) */
+.md-main__inner {
+  display: flex;
+  max-width: var(--md-container-width) !important;
+  margin-top: 1rem;
+  gap: 1rem; /* 메뉴와 본문 사이 공백을 줄여서 본문을 왼쪽으로 당김 */
+}
+
+/* 좌측 사이드바 실제 너비 강제 고정 */
 .md-sidebar--primary, 
 .md-sidebar--primary .md-sidebar__inner {
   width: var(--md-sidebar-width) !important;
 }
 
-/* 3. [핵심 수정] 좌측 메뉴 글자가 잘리지 않고 우측 끝까지 가게 함 */
+.md-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 4. [핵심] 좌측 메뉴 글자가 파란 공백까지 시원하게 한 줄로 확장 */
 .md-nav__link {
-  display: block !important;          /* 영역 전체 차지 */
   padding: 0.6em 1rem !important;
   border-radius: 6px;
   transition: all 0.2s;
+  display: block !important;
   
-  /* 글자 잘림 방지 설정 */
-  white-space: normal !important;      /* 기본적으로 줄바꿈 허용 (공간 다 썼을때만) */
-  word-break: keep-all !important;     /* 한글 단어 단위로 깔끔하게 줄바꿈 */
+  /* 글자 잘림 방지 및 한 줄 유지 노력 */
+  white-space: normal !important;      /* 공간 부족 시에만 줄바꿈 */
+  word-break: keep-all !important;     /* 한글 단어 보존 */
 }
 
-/* 4. [핵심 추가] 테마 자체에서 글자를 자르는 '말줄임표(...)' 기능 완전 제거 */
+/* 테마의 말줄임표(...) 강제 제거 및 글자 확장 */
 .md-nav__link .md-ellipsis {
-  white-space: normal !important;      /* 한 줄 강제 고정 해제 */
-  display: inline !important;          /* 글자가 옆으로 쭉 퍼지게 함 */
+  white-space: normal !important;
+  display: inline !important;
   overflow: visible !important;
-  text-overflow: clip !important;
-  max-width: none !important;          /* 가로 막음 제거 */
+  max-width: none !important;
 }
 
-/* 5. 본문 위치 조정 (사이드바가 넓어진 만큼 옆으로 밀어주기) */
-.md-main__inner {
-  display: flex;
-  max-width: var(--md-container-width) !important;
-  margin-top: 1rem;
+/* 활성화된 메뉴 강조 스타일 */
+.md-nav__link--active {
+  font-weight: bold;
+  background-color: rgba(183, 28, 28, 0.08) !important;
+  color: #B71C1C !important;
 }
+
+/* 5. 본문 및 이미지 스타일 유지 */
+.md-typeset {
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+.md-typeset img {
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  border: 1px solid #f0f0f0;
+  margin: 1.5em 0;
+}
+
+/* 6. 로고 크기 및 모바일 대응 유지 */
+.logo-img {
+    width: 90px !important;      
+    max-width: 90px !important;  
+    height: auto !important;
+    display: block;
+    margin: 0
