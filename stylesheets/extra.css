@@ -3,8 +3,8 @@
 
 :root {
   --md-primary-fg-color: #B71C1C;
-  /* 왼쪽 사이드바 너비: 빨간 라인 위치에 맞춰 19rem으로 확장 */
-  --md-sidebar-width: 19rem !important;
+  /* 사이드바 너비를 24rem으로 대폭 확장하여 글자 잘림 방지 */
+  --md-sidebar-width: 24rem !important;
 }
 
 body, input { font-family: "Pretendard", sans-serif !important; }
@@ -16,51 +16,52 @@ body, input { font-family: "Pretendard", sans-serif !important; }
   margin-right: auto;
 }
 
-/* 3. 상단 탭(메뉴) 가독성 및 2줄 처리 */
+/* 3. 상단 탭(메뉴) 2줄 유지 및 가독성 */
 .md-tabs {
   background-color: #A50000 !important;
-  height: auto !important; /* 내용에 따라 높이 자동 조절 */
+  height: auto !important;
   padding: 5px 0 !important;
 }
 
 .md-tabs__list {
   display: flex !important;
-  flex-wrap: wrap !important; /* 공간 부족 시 자동으로 다음 줄 이동 */
-  gap: 5px 15px; /* 메뉴 간 간격 */
+  flex-wrap: wrap !important;
+  gap: 5px 15px;
   justify-content: flex-start;
 }
 
-.md-tabs__item {
-  margin: 2px 0 !important;
-}
-
 .md-tabs__link {
-  font-size: 0.9rem !important; /* 글자 크기 확대 */
+  font-size: 0.9rem !important;
   font-weight: 600 !important;
-  opacity: 1 !important; /* 글자 선명도 최대 */
+  opacity: 1 !important;
   padding: 5px 10px !important;
-  white-space: nowrap;
 }
 
-/* 4. 왼쪽 사이드바 디자인 및 가독성 */
+/* 4. [핵심] 왼쪽 사이드바 너비 확장 및 텍스트 정렬 */
 @media screen and (min-width: 76.25em) {
   .md-sidebar--primary {
-    width: 19rem !important; /* 확장된 너비 적용 */
+    width: 24rem !important; /* 파란 네모칸의 너비를 직접 확장 */
+  }
+
+  .md-sidebar--primary .md-sidebar__inner {
+    width: 24rem !important;
   }
 
   .md-content {
-    margin-left: 1rem !important;
+    /* 사이드바가 넓어진 만큼 본문 마진 조정 */
+    margin-left: 1.5rem !important;
   }
 }
 
 .md-nav__link {
-  font-size: 0.85rem !important; /* 사이드바 글자 크기도 살짝 확대 */
-  line-height: 1.5 !important;
-  padding: 0.6rem 0.8rem !important;
-  white-space: normal !important; /* 긴 제목은 자연스럽게 줄바꿈 */
+  font-size: 0.85rem !important;
+  line-height: 1.4 !important;
+  /* 내부 여백을 줄여 텍스트가 가로로 더 길게 뻗게 함 */
+  padding: 0.5rem 0.4rem !important; 
+  white-space: normal !important;
 }
 
-/* 5. 스크롤바 위치 및 떨림 방지 고정 */
+/* 5. 스크롤 및 레이아웃 안정화 */
 html {
   overflow-y: scroll;
 }
