@@ -1,79 +1,80 @@
-/* 1. 기본 설정 및 폰트 */
+/* 1. 기본 폰트 및 테마 색상 */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 :root {
   --md-primary-fg-color: #B71C1C;
-  /* 사이드바 너비를 시원하게 확장 */
-  --md-sidebar-width: 26rem !important;
+  --md-sidebar-width: 24rem !important; /* 사이드바 너비 지정 */
 }
 
 body, input { font-family: "Pretendard", sans-serif !important; }
 
-/* 2. 상단 탭(메뉴) 꼬임 방지 및 2줄 정렬 */
-.md-tabs {
-  background-color: #A50000 !important;
-  height: auto !important; /* 높이 고정 해제 */
-  padding: 10px 0 !important;
-}
-
-.md-tabs__list {
-  display: flex !important;
-  flex-wrap: wrap !important; /* 공간 부족 시 다음 줄로 */
-  gap: 8px 20px !important;
-  justify-content: flex-start !important;
-  margin: 0 20px !important;
-}
-
-.md-tabs__link {
-  font-size: 1rem !important; /* 글자 크게 */
-  font-weight: 700 !important;
-  opacity: 1 !important;
-  padding: 0 !important;
-  line-height: 1.2 !important;
-}
-
-/* 3. [완결] 사이드바 글자 잘림(...) 및 2줄 현상 완전 해결 */
-@media screen and (min-width: 76.25em) {
-  .md-sidebar--primary, 
-  .md-sidebar--primary .md-sidebar__inner {
-    width: 26rem !important;
-  }
-  .md-content {
-    margin-left: 2rem !important;
-  }
-}
-
-.md-nav__link {
-  font-size: 0.95rem !important;
-  line-height: 1.8 !important; /* 줄 간격 여유 있게 */
-  padding: 0.4rem 0 !important;
-  
-  /* 테마의 글자 제한 설정을 완전히 무력화 */
-  white-space: nowrap !important;
-  display: block !important;
-}
-
-/* ★ 중요: '...' 표시를 만드는 내부 요소 강제 해제 ★ */
-.md-nav__link span, 
-.md-ellipsis {
-  white-space: nowrap !important;
-  overflow: visible !important;
-  text-overflow: clip !important;
-  max-width: none !important;
-  display: inline !important;
-}
-
-/* 4. 전체 레이아웃 및 양옆 공백 최적화 */
+/* 2. 전체 레이아웃 폭 (좌우 공백 최소화) */
 .md-grid {
   max-width: 98% !important;
 }
 
-/* 5. 화면 떨림 방지 고정 */
-html {
-  overflow-y: scroll !important;
+/* 3. 상단 메뉴 탭 (2줄 자동 정렬 및 가독성) */
+.md-tabs {
+  background-color: #A50000 !important;
+  height: auto !important;
+  padding: 5px 0 !important;
+}
+.md-tabs__list {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px 15px !important;
+}
+.md-tabs__link {
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
 }
 
+/* 4. [완결] 좌측 사이드바 구조적 폭 고정 및 스크롤바 제거 */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    width: 24rem !important;
+    flex: 0 0 24rem !important; /* 테마가 강제로 너비를 줄이는 현상 차단 */
+    max-width: 24rem !important;
+  }
+  .md-sidebar--primary .md-sidebar__scrollwrap {
+    width: 100% !important;
+    overflow-x: hidden !important; /* 하단 가로 스크롤바 원천 차단 */
+  }
+  .md-content {
+    margin-left: 2rem !important; /* 사이드바와 본문 겹침 방지 */
+  }
+}
+
+/* 5. [완결] 글자 짤림 및 가려짐 현상 완전 해제 */
+.md-nav {
+  width: 100% !important;
+}
+
+.md-nav__link {
+  font-size: 0.9rem !important;
+  white-space: nowrap !important; /* 무조건 한 줄 */
+  display: block !important;
+  width: 100% !important;
+  padding-right: 5px !important;
+}
+
+/* 핵심: 테마가 글자를 가두는 투명 상자(span, md-ellipsis) 제한 해제 */
+.md-nav__link .md-ellipsis,
+.md-nav__link span {
+  max-width: none !important; /* 너비 제한 없음 */
+  width: auto !important;
+  overflow: visible !important; /* 가려진 부분 다 보여주기 */
+  white-space: nowrap !important;
+  text-overflow: clip !important; /* 말줄임표(...) 삭제 */
+  display: inline-block !important;
+}
+
+/* 6. 화면 떨림 방지 */
+html { overflow-y: scroll !important; }
+.md-main__inner { padding-bottom: 10rem !important; }
 .md-nav__link--active {
   font-weight: bold;
   color: #B71C1C !important;
+  background-color: rgba(183, 28, 28, 0.08) !important;
 }
