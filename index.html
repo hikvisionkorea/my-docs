@@ -3561,7 +3561,7 @@
   <h1>홈</h1>
 
 <style>
-    /* === 기본 레이아웃 === */
+    /* === 인덱스 전용 비주얼 레이아웃 === */
     #vanta-bg {
         width: 100%;
         height: 600px;
@@ -3586,7 +3586,7 @@
         transform-style: preserve-3d;
     }
 
-    /* === 🚀 6면 HIKVISION 통합 사이버네틱 큐브 🚀 === */
+    /* === 🚀 6면 HIKVISION 사이버네틱 큐브 🚀 === */
     .digital-cube {
         width: 160px;
         height: 160px;
@@ -3596,17 +3596,16 @@
         margin-bottom: 60px;
     }
 
-    /* 내부 발광 코어 (맥동하는 에너지) */
     .cube-core {
         position: absolute;
         width: 60px; height: 60px;
         top: 50px; left: 50px;
-        background: #fff; /* 코어를 더 밝게 변경 */
+        background: #fff;
         border-radius: 50%;
         filter: blur(20px);
         box-shadow: 0 0 60px #3fbbef, 0 0 100px #fff;
         opacity: 0.9;
-        animation: corePulse 0.1s infinite alternate; /* 아주 빠르게 떨림 */
+        animation: corePulse 0.1s infinite alternate;
     }
 
     .cube-face {
@@ -3617,7 +3616,6 @@
         align-items: center;
         justify-content: center;
         box-sizing: border-box;
-        /* 배경: 회로도 느낌의 그리드 */
         background: 
             linear-gradient(rgba(63, 187, 239, 0.2) 1px, transparent 1px),
             linear-gradient(90deg, rgba(63, 187, 239, 0.2) 1px, transparent 1px),
@@ -3626,48 +3624,20 @@
         border: 2px solid rgba(63, 187, 239, 0.6);
         backdrop-filter: blur(5px);
         overflow: hidden;
-        /* 전기 효과 애니메이션 적용 */
         animation: electricBorder 3s infinite; 
     }
 
-    /* 전기 흐름 효과 (Energy Flow) - 큐브 면 위를 지나가는 빛 */
     .cube-face::before {
         content: '';
         position: absolute;
         top: -50%; left: -50%;
         width: 200%; height: 200%;
-        background: linear-gradient(
-            transparent, 
-            rgba(255, 255, 255, 0.8), 
-            transparent
-        );
+        background: linear-gradient(transparent, rgba(255, 255, 255, 0.8), transparent);
         transform: rotate(45deg);
-        animation: scanline 4s infinite linear; /* 빛이 슥 지나감 */
+        animation: scanline 4s infinite linear;
         opacity: 0;
     }
 
-    /* 코너 브래킷 (더 강한 발광) */
-    .cube-face::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border: 2px solid transparent;
-        /* 모서리 부분만 강조 */
-        background: 
-            linear-gradient(to right, #3fbbef 2px, transparent 2px) 0 0,
-            linear-gradient(to bottom, #3fbbef 2px, transparent 2px) 0 0,
-            linear-gradient(to left, #3fbbef 2px, transparent 2px) 100% 0,
-            linear-gradient(to bottom, #3fbbef 2px, transparent 2px) 100% 0,
-            linear-gradient(to right, #3fbbef 2px, transparent 2px) 0 100%,
-            linear-gradient(to top, #3fbbef 2px, transparent 2px) 0 100%,
-            linear-gradient(to left, #3fbbef 2px, transparent 2px) 100% 100%,
-            linear-gradient(to top, #3fbbef 2px, transparent 2px) 100% 100%;
-        background-repeat: no-repeat;
-        background-size: 20px 20px;
-        box-shadow: 0 0 10px rgba(63, 187, 239, 0.8);
-    }
-
-    /* 텍스트 디자인 (스파크 튀는 느낌) */
     .cube-face span {
         font-family: 'Courier New', monospace;
         font-weight: 900;
@@ -3676,7 +3646,7 @@
         text-shadow: 0 0 5px #3fbbef;
         z-index: 2;
         transform: translateZ(20px);
-        animation: textFlicker 4s infinite; /* 텍스트 깜빡임 */
+        animation: textFlicker 4s infinite;
     }
 
     /* 면 조립 */
@@ -3687,56 +3657,35 @@
     .face-top    { transform: rotateX(90deg) translateZ(80px); }
     .face-bottom { transform: rotateX(-90deg) translateZ(80px); }
 
-    /* === 애니메이션 정의 === */
-
-    /* 큐브 회전 */
+    /* 애니메이션 */
     @keyframes rotateCyberCube {
         0%   { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
         100% { transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg); }
     }
-
-    /* 테두리 전기 스파크 (찌릿찌릿) */
     @keyframes electricBorder {
-        0%, 100% { box-shadow: 0 0 5px #3fbbef, inset 0 0 5px #3fbbef; border-color: rgba(63, 187, 239, 0.6); }
-        2% { box-shadow: 0 0 30px #fff, inset 0 0 20px #fff; border-color: #fff; } /* 섬광 */
-        4% { box-shadow: 0 0 5px #3fbbef, inset 0 0 5px #3fbbef; border-color: rgba(63, 187, 239, 0.6); }
-        40% { border-color: rgba(63, 187, 239, 0.3); }
-        42% { border-color: #3fbbef; box-shadow: 0 0 15px #3fbbef; }
-        44% { border-color: rgba(63, 187, 239, 0.3); }
+        0%, 100% { box-shadow: 0 0 5px #3fbbef; border-color: rgba(63, 187, 239, 0.6); }
+        2% { box-shadow: 0 0 30px #fff; border-color: #fff; }
+        4% { box-shadow: 0 0 5px #3fbbef; border-color: rgba(63, 187, 239, 0.6); }
     }
-
-    /* 코어의 불안정한 에너지 */
     @keyframes corePulse {
         0% { transform: scale(0.95); opacity: 0.8; }
         100% { transform: scale(1.05); opacity: 1; }
     }
-
-    /* 표면을 지나가는 빛 (스캔라인) */
     @keyframes scanline {
         0% { top: -100%; opacity: 0; }
-        20% { opacity: 0.5; }
         40% { top: 200%; opacity: 0; }
-        100% { opacity: 0; }
     }
-
-    /* 텍스트 접촉 불량 효과 */
     @keyframes textFlicker {
-        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-            opacity: 1;
-            text-shadow: 0 0 10px #3fbbef, 0 0 20px #3fbbef;
-        }
-        20%, 24%, 55% {
-            opacity: 0.5;
-            text-shadow: none;
-        }
+        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; text-shadow: 0 0 10px #3fbbef; }
+        20%, 24%, 55% { opacity: 0.5; text-shadow: none; }
     }
 
-    /* 하단 텍스트 */
-    .sub-title {
+    .sub-title-main {
         font-size: 2.5rem;
         font-weight: 800;
         text-shadow: 0 0 25px rgba(63, 187, 239, 0.8);
         margin-top: 20px;
+        color: #fff;
     }
 </style>
 
@@ -3746,7 +3695,6 @@
 
         <div class="digital-cube">
             <div class="cube-core"></div>
-
             <div class="cube-face face-front"><span>HIKVISION</span></div>
             <div class="cube-face face-back"><span>HIKVISION</span></div>
             <div class="cube-face face-right"><span>HIKVISION</span></div>
@@ -3755,7 +3703,7 @@
             <div class="cube-face face-bottom"><span>HIKVISION</span></div>
         </div>
 
-        <p class="sub-title">기술 지원 센터</p>
+        <p class="sub-title-main">기술 지원 센터</p>
     </div>
 </div>
 
@@ -3763,7 +3711,6 @@
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 
 <script>
-    // VANTA 배경 애니메이션 설정
     VANTA.NET({
         el: "#vanta-bg",
         mouseControls: true,
