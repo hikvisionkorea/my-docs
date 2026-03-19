@@ -2,34 +2,37 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 body, input { font-family: "Pretendard", sans-serif !important; }
 
-/* 2. 화면 전체 너비 98% 확장 */
+/* 2. 화면 전체 너비 확장 */
 .md-grid {
   max-width: 98% !important;
 }
 
-/* 3. [해결] 좌측 사이드바 자체의 너비 확보 */
-/* 초록색+파란색 박스를 합친 만큼 넉넉하게 넓혔습니다 */
+/* 3. 좌측 사이드바 자체 너비 확보 (파란색 공백 포함) */
 :root {
-  --md-sidebar-width: 35rem !important; 
+  --md-sidebar-width: 40rem !important; 
 }
 
-/* 4. [해결] 글자가 파란색 공백까지 한 줄로 쭉 이어지게 설정 */
-.md-nav__link,
-.md-nav__link .md-ellipsis,
-.md-nav__link span {
-  white-space: normal !important;      /* 줄바꿈 허용 (공간 부족할 때만) */
-  display: block !important;           /* 영역 전체 사용 */
-  overflow: visible !important;        /* 숨김 해제 */
-  text-overflow: clip !important;      /* 말줄임표(...) 제거 */
-  word-break: keep-all !important;     /* 한글 단어 단위로 예쁘게 줄바꿈 */
-  line-height: 1.5 !important;
-  max-width: none !important;          /* 글자 너비 제한 완전 해제 */
+/* 4. [핵심] 글자를 가두는 모든 제약 해제 - 한 줄로 길게 뽑기 */
+.md-nav__link, 
+.md-nav__link .md-ellipsis, 
+.md-nav__link > span,
+.md-nav__item {
+  white-space: nowrap !important;     /* [중요] 절대 줄바꿈 하지 말고 한 줄로 유지 */
+  overflow: visible !important;       /* 넘치는 글자 숨기지 않기 */
+  text-overflow: clip !important;     /* 말줄임표(...) 제거 */
+  display: inline-block !important;   /* 글자 길이에 따라 상자가 늘어나게 함 */
+  max-width: none !important;         /* 최대 너비 제한 완전 삭제 */
+  width: auto !important;             /* 고정 너비 해제 */
 }
 
-/* 사이드바 내부 컨텐츠가 좁은 폭에 갇히지 않도록 강제 수정 */
-.md-sidebar--primary {
+/* 5. 사이드바 내부 컨텐츠 박스 강제 확장 */
+.md-sidebar--primary, 
+.md-sidebar--primary .md-sidebar__inner,
+.md-nav--primary {
   width: var(--md-sidebar-width) !important;
 }
-.md-sidebar--primary .md-nav {
-  width: 100% !important;
+
+/* 6. 제목이 너무 길어 화면을 넘어갈 때만 예외적으로 스크롤 허용 */
+.md-sidebar--primary {
+  overflow-x: auto !important;
 }
