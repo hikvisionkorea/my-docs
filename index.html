@@ -3561,69 +3561,429 @@
   <h1>홈</h1>
 
 <style>
-    /* 메인 비주얼 섹션 - 전체 폭에 맞춰 유연하게 조절 */
+
+    /* === 기본 레이아웃 === */
+
     #vanta-bg {
+
         width: 100%;
-        height: 480px; 
+
+        height: 600px;
+
         display: flex;
+
         align-items: center;
+
         justify-content: center;
+
         color: white;
-        border-radius: 15px;
-        background: #020408;
+
+        border-radius: 20px;
+
+        background: radial-gradient(circle at center, #0a1b35 0%, #020408 100%);
+
         position: relative;
+
         overflow: hidden;
-        margin-bottom: 40px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+
+        box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+
+        perspective: 2000px;
+
     }
 
-    .content-wrapper { z-index: 10; display: flex; flex-direction: column; align-items: center; transform-style: preserve-3d; }
 
-    /* 큐브 디자인 */
-    .digital-cube { width: 130px; height: 130px; position: relative; transform-style: preserve-3d; animation: rotateCyberCube 20s infinite linear; margin-bottom: 30px; }
-    .cube-core { position: absolute; width: 40px; height: 40px; top: 45px; left: 45px; background: #fff; border-radius: 50%; filter: blur(15px); box-shadow: 0 0 50px #3fbbef; opacity: 0.8; }
-    .cube-face { position: absolute; width: 130px; height: 130px; display: flex; align-items: center; justify-content: center; background: rgba(10, 25, 47, 0.85); border: 1.5px solid rgba(63, 187, 239, 0.5); box-sizing: border-box; }
-    .cube-face span { font-family: monospace; font-weight: 900; font-size: 15px; color: #fff; text-shadow: 0 0 5px #3fbbef; }
 
-    /* 큐브 조립 */
-    .face-front { transform: translateZ(65px); }
-    .face-back { transform: rotateY(180deg) translateZ(65px); }
-    .face-right { transform: rotateY(90deg) translateZ(65px); }
-    .face-left { transform: rotateY(-90deg) translateZ(65px); }
-    .face-top { transform: rotateX(90deg) translateZ(65px); }
-    .face-bottom { transform: rotateX(-90deg) translateZ(65px); }
+    .content-wrapper {
 
-    @keyframes rotateCyberCube { 0% { transform: rotateX(0deg) rotateY(0deg); } 100% { transform: rotateX(360deg) rotateY(720deg); } }
+        z-index: 10;
 
-    .sub-title-main { font-size: 2rem; font-weight: 800; text-shadow: 0 0 15px rgba(63, 187, 239, 0.6); color: #fff; margin: 0; }
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        transform-style: preserve-3d;
+
+    }
+
+
+
+    /* === 🚀 6면 HIKVISION 통합 사이버네틱 큐브 🚀 === */
+
+    .digital-cube {
+
+        width: 160px;
+
+        height: 160px;
+
+        position: relative;
+
+        transform-style: preserve-3d;
+
+        animation: rotateCyberCube 20s infinite linear;
+
+        margin-bottom: 60px;
+
+    }
+
+
+
+    /* 내부 발광 코어 (맥동하는 에너지) */
+
+    .cube-core {
+
+        position: absolute;
+
+        width: 60px; height: 60px;
+
+        top: 50px; left: 50px;
+
+        background: #fff; /* 코어를 더 밝게 변경 */
+
+        border-radius: 50%;
+
+        filter: blur(20px);
+
+        box-shadow: 0 0 60px #3fbbef, 0 0 100px #fff;
+
+        opacity: 0.9;
+
+        animation: corePulse 0.1s infinite alternate; /* 아주 빠르게 떨림 */
+
+    }
+
+
+
+    .cube-face {
+
+        position: absolute;
+
+        width: 160px;
+
+        height: 160px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        box-sizing: border-box;
+
+        /* 배경: 회로도 느낌의 그리드 */
+
+        background: 
+
+            linear-gradient(rgba(63, 187, 239, 0.2) 1px, transparent 1px),
+
+            linear-gradient(90deg, rgba(63, 187, 239, 0.2) 1px, transparent 1px),
+
+            rgba(10, 25, 47, 0.85);
+
+        background-size: 20px 20px;
+
+        border: 2px solid rgba(63, 187, 239, 0.6);
+
+        backdrop-filter: blur(5px);
+
+        overflow: hidden;
+
+        /* 전기 효과 애니메이션 적용 */
+
+        animation: electricBorder 3s infinite; 
+
+    }
+
+
+
+    /* 전기 흐름 효과 (Energy Flow) - 큐브 면 위를 지나가는 빛 */
+
+    .cube-face::before {
+
+        content: '';
+
+        position: absolute;
+
+        top: -50%; left: -50%;
+
+        width: 200%; height: 200%;
+
+        background: linear-gradient(
+
+            transparent, 
+
+            rgba(255, 255, 255, 0.8), 
+
+            transparent
+
+        );
+
+        transform: rotate(45deg);
+
+        animation: scanline 4s infinite linear; /* 빛이 슥 지나감 */
+
+        opacity: 0;
+
+    }
+
+
+
+    /* 코너 브래킷 (더 강한 발광) */
+
+    .cube-face::after {
+
+        content: '';
+
+        position: absolute;
+
+        inset: 0;
+
+        border: 2px solid transparent;
+
+        /* 모서리 부분만 강조 */
+
+        background: 
+
+            linear-gradient(to right, #3fbbef 2px, transparent 2px) 0 0,
+
+            linear-gradient(to bottom, #3fbbef 2px, transparent 2px) 0 0,
+
+            linear-gradient(to left, #3fbbef 2px, transparent 2px) 100% 0,
+
+            linear-gradient(to bottom, #3fbbef 2px, transparent 2px) 100% 0,
+
+            linear-gradient(to right, #3fbbef 2px, transparent 2px) 0 100%,
+
+            linear-gradient(to top, #3fbbef 2px, transparent 2px) 0 100%,
+
+            linear-gradient(to left, #3fbbef 2px, transparent 2px) 100% 100%,
+
+            linear-gradient(to top, #3fbbef 2px, transparent 2px) 100% 100%;
+
+        background-repeat: no-repeat;
+
+        background-size: 20px 20px;
+
+        box-shadow: 0 0 10px rgba(63, 187, 239, 0.8);
+
+    }
+
+
+
+    /* 텍스트 디자인 (스파크 튀는 느낌) */
+
+    .cube-face span {
+
+        font-family: 'Courier New', monospace;
+
+        font-weight: 900;
+
+        font-size: 18px;
+
+        color: #fff;
+
+        text-shadow: 0 0 5px #3fbbef;
+
+        z-index: 2;
+
+        transform: translateZ(20px);
+
+        animation: textFlicker 4s infinite; /* 텍스트 깜빡임 */
+
+    }
+
+
+
+    /* 면 조립 */
+
+    .face-front  { transform: translateZ(80px); }
+
+    .face-back   { transform: rotateY(180deg) translateZ(80px); }
+
+    .face-right  { transform: rotateY(90deg) translateZ(80px); }
+
+    .face-left   { transform: rotateY(-90deg) translateZ(80px); }
+
+    .face-top    { transform: rotateX(90deg) translateZ(80px); }
+
+    .face-bottom { transform: rotateX(-90deg) translateZ(80px); }
+
+
+
+    /* === 애니메이션 정의 === */
+
+
+
+    /* 큐브 회전 */
+
+    @keyframes rotateCyberCube {
+
+        0%   { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+
+        100% { transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg); }
+
+    }
+
+
+
+    /* 테두리 전기 스파크 (찌릿찌릿) */
+
+    @keyframes electricBorder {
+
+        0%, 100% { box-shadow: 0 0 5px #3fbbef, inset 0 0 5px #3fbbef; border-color: rgba(63, 187, 239, 0.6); }
+
+        2% { box-shadow: 0 0 30px #fff, inset 0 0 20px #fff; border-color: #fff; } /* 섬광 */
+
+        4% { box-shadow: 0 0 5px #3fbbef, inset 0 0 5px #3fbbef; border-color: rgba(63, 187, 239, 0.6); }
+
+        40% { border-color: rgba(63, 187, 239, 0.3); }
+
+        42% { border-color: #3fbbef; box-shadow: 0 0 15px #3fbbef; }
+
+        44% { border-color: rgba(63, 187, 239, 0.3); }
+
+    }
+
+
+
+    /* 코어의 불안정한 에너지 */
+
+    @keyframes corePulse {
+
+        0% { transform: scale(0.95); opacity: 0.8; }
+
+        100% { transform: scale(1.05); opacity: 1; }
+
+    }
+
+
+
+    /* 표면을 지나가는 빛 (스캔라인) */
+
+    @keyframes scanline {
+
+        0% { top: -100%; opacity: 0; }
+
+        20% { opacity: 0.5; }
+
+        40% { top: 200%; opacity: 0; }
+
+        100% { opacity: 0; }
+
+    }
+
+
+
+    /* 텍스트 접촉 불량 효과 */
+
+    @keyframes textFlicker {
+
+        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+
+            opacity: 1;
+
+            text-shadow: 0 0 10px #3fbbef, 0 0 20px #3fbbef;
+
+        }
+
+        20%, 24%, 55% {
+
+            opacity: 0.5;
+
+            text-shadow: none;
+
+        }
+
+    }
+
+
+
+    /* 하단 텍스트 */
+
+    .sub-title {
+
+        font-size: 2.5rem;
+
+        font-weight: 800;
+
+        text-shadow: 0 0 25px rgba(63, 187, 239, 0.8);
+
+        margin-top: 20px;
+
+    }
+
 </style>
 
 <div id="vanta-bg">
+
     <div class="content-wrapper">
-        <img src="logo.png" style="width:120px; margin-bottom:20px; filter: drop-shadow(0 0 8px #3fbbef);" alt="HIKVISION">
+
+        <img src="logo.png" style="width:160px; margin-bottom:50px; filter: drop-shadow(0 0 10px #3fbbef);" alt="HIKVISION">
+
+
+
         <div class="digital-cube">
+
             <div class="cube-core"></div>
+
+
+
             <div class="cube-face face-front"><span>HIKVISION</span></div>
+
             <div class="cube-face face-back"><span>HIKVISION</span></div>
+
             <div class="cube-face face-right"><span>HIKVISION</span></div>
+
             <div class="cube-face face-left"><span>HIKVISION</span></div>
+
             <div class="cube-face face-top"><span>HIKVISION</span></div>
+
             <div class="cube-face face-bottom"><span>HIKVISION</span></div>
+
         </div>
-        <p class="sub-title-main">기술 지원 센터</p>
+
+
+
+        <p class="sub-title">기술 지원 센터</p>
+
     </div>
+
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 
 <script>
+
+    // VANTA 배경 애니메이션 설정
+
     VANTA.NET({
+
         el: "#vanta-bg",
-        mouseControls: true, touchControls: true,
-        color: 0x3fbbef, backgroundColor: 0x020408,
-        points: 12.00, maxDistance: 20.00, spacing: 18.00
+
+        mouseControls: true,
+
+        touchControls: true,
+
+        gyroControls: false,
+
+        color: 0x3fbbef,
+
+        backgroundColor: 0x020408,
+
+        points: 14.00,
+
+        maxDistance: 20.00,
+
+        spacing: 16.00
+
     });
+
 </script>
 
 <h2 id="1811-5998">📞 고객 지원 안내 📞1811-5998</h2>
