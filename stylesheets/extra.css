@@ -30,9 +30,9 @@ body, input {
 
   /* 메뉴 폭을 넓게 (20rem), 전체 폭도 충분히 (90rem) 확장 */
 
-  --md-sidebar-width: 20rem; 
+  --md-sidebar-width: 35rem; 
 
-  --md-container-width: 90rem; 
+  --md-container-width: 105rem; 
 
 }
 
