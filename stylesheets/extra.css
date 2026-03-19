@@ -1,22 +1,22 @@
-/* 1. 기본 설정 및 변수 */
+/* 1. 기본 설정 및 폰트 */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 :root {
   --md-primary-fg-color: #B71C1C;
-  /* 사이드바 너비를 24rem으로 대폭 확장하여 글자 잘림 방지 */
-  --md-sidebar-width: 24rem !important;
+  /* 사이드바 너비를 25rem으로 충분히 확보 */
+  --md-sidebar-width: 25rem !important;
 }
 
 body, input { font-family: "Pretendard", sans-serif !important; }
 
-/* 2. 전체 레이아웃 폭 확장 */
+/* 2. 전체 폭 확장 */
 .md-grid {
   max-width: 98% !important;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* 3. 상단 탭(메뉴) 2줄 유지 및 가독성 */
+/* 3. 상단 탭 메뉴 가독성 (2줄 유지 및 글자 확대) */
 .md-tabs {
   background-color: #A50000 !important;
   height: auto !important;
@@ -27,51 +27,49 @@ body, input { font-family: "Pretendard", sans-serif !important; }
   display: flex !important;
   flex-wrap: wrap !important;
   gap: 5px 15px;
-  justify-content: flex-start;
 }
 
 .md-tabs__link {
-  font-size: 0.9rem !important;
-  font-weight: 600 !important;
+  font-size: 0.95rem !important; /* 글자 살짝 더 키움 */
+  font-weight: 700 !important;
   opacity: 1 !important;
-  padding: 5px 10px !important;
 }
 
-/* 4. [핵심] 왼쪽 사이드바 너비 확장 및 텍스트 정렬 */
+/* 4. [해결] 왼쪽 사이드바 글자 한 줄 고정 */
 @media screen and (min-width: 76.25em) {
-  .md-sidebar--primary {
-    width: 24rem !important; /* 파란 네모칸의 너비를 직접 확장 */
-  }
-
+  .md-sidebar--primary, 
   .md-sidebar--primary .md-sidebar__inner {
-    width: 24rem !important;
+    width: 25rem !important;
   }
 
   .md-content {
-    /* 사이드바가 넓어진 만큼 본문 마진 조정 */
     margin-left: 1.5rem !important;
   }
 }
 
 .md-nav__link {
-  font-size: 0.85rem !important;
-  line-height: 1.4 !important;
-  /* 내부 여백을 줄여 텍스트가 가로로 더 길게 뻗게 함 */
-  padding: 0.5rem 0.4rem !important; 
-  white-space: normal !important;
+  font-size: 0.9rem !important; /* 가독성을 위해 살짝 키움 */
+  line-height: 1.6 !important;
+  padding: 0.4rem 0.2rem !important; /* 좌우 여백을 줄여 공간 확보 */
+  
+  /* ★ 핵심: 줄바꿈 금지 및 한 줄 강제 ★ */
+  white-space: nowrap !important; 
+  display: block !important;
+  overflow: hidden;
+  text-overflow: ellipsis; /* 혹시라도 폭을 넘어가면 ... 처리 */
 }
 
-/* 5. 스크롤 및 레이아웃 안정화 */
+/* 5. 레이아웃 및 스크롤 안정화 */
 html {
   overflow-y: scroll;
 }
 
 .md-main__inner {
-  padding-bottom: 10rem !important;
+  padding-bottom: 12rem !important;
 }
 
 .md-nav__link--active {
   font-weight: bold;
-  background-color: rgba(183, 28, 28, 0.08) !important;
+  background-color: rgba(183, 28, 28, 0.1) !important;
   color: #B71C1C !important;
 }
