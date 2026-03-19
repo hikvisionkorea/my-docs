@@ -1,47 +1,58 @@
-/* 1. 기본 폰트 및 테마 색상 */
+/* 1. 기본 폰트 및 변수 설정 */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 :root {
   --md-primary-fg-color: #B71C1C;
-  /* 사이드바 너비를 12rem(약 240px)로 고정하여 본문 공간 확보 */
-  --md-sidebar-width: 12rem !important;
+  --md-sidebar-width: 15.5rem !important; /* 사이드바 너비 최적화 */
 }
 
 body, input { font-family: "Pretendard", sans-serif !important; }
 
-/* 2. 레이아웃 안정화 (왼쪽 너비 줄이기 & 떨림 방지) */
-@media screen and (min-width: 76.25em) {
-  /* 본문 전체 폭 설정 */
-  .md-container {
-    max-width: 95% !important; 
-    margin: 0 auto;
-  }
+/* 2. 가로 폭 확장 및 양옆 공백 제거 */
+.md-grid {
+  max-width: 98% !important; /* 전체 화면 거의 다 사용 */
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  /* 사이드바 너비 강제 고정 */
+/* 3. 레이아웃 안정화 (사이드바와 본문 분리) */
+@media screen and (min-width: 76.25em) {
   .md-sidebar--primary {
     width: var(--md-sidebar-width) !important;
   }
 
-  /* 본문 영역이 사이드바와 겹치지 않게 마진 확보 */
   .md-content {
-    margin-left: 1rem !important;
-    padding-bottom: 5rem !important; /* 하단 떨림 방지 여백 */
+    margin-left: 0.5rem !important; /* 사이드바와의 미세 간격 */
   }
 }
 
-/* 3. 메뉴 글자 줄바꿈 방지 및 디자인 */
-.md-nav__link {
-  font-size: 0.65rem !important; /* 글자 크기를 살짝 줄여서 사이드바에 맞춤 */
-  padding: 0.4rem 0.6rem !important;
-  white-space: normal !important; /* 길면 다음 줄로 넘어가게 설정 */
-  line-height: 1.4 !important;
-}
-
-/* 4. 상단 헤더 고정 및 디자인 */
+/* 4. 상단 탭/헤더 가림 현상 방지 */
 .md-header {
   position: sticky !important;
   top: 0;
+  z-index: 3;
   background-color: #A50000 !important;
+}
+
+.md-tabs {
+  background-color: #A50000 !important;
+  z-index: 2;
+}
+
+/* 5. 스크롤 떨림 방지 (핵심: 스크롤바 공간 상시 확보) */
+html {
+  overflow-y: scroll; /* 스크롤바가 생기고 없어질 때의 너비 변화를 원천 차단 */
+}
+
+.md-main__inner {
+  padding-bottom: 5rem !important; /* 하단 여백 충분히 확보 */
+}
+
+/* 6. 메뉴 가독성 (이미지 참고 반영) */
+.md-nav__link {
+  font-size: 0.75rem !important;
+  padding: 0.5rem 0.6rem !important;
+  line-height: 1.4;
 }
 
 .md-nav__link--active {

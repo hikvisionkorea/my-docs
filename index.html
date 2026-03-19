@@ -3561,120 +3561,46 @@
   <h1>홈</h1>
 
 <style>
-    /* === 인덱스 비주얼 섹션 최적화 === */
+    /* 메인 비주얼 섹션 - 전체 폭에 맞춰 유연하게 조절 */
     #vanta-bg {
         width: 100%;
-        height: 50vh; /* 화면 높이의 50%로 유연하게 조절 */
-        min-height: 400px;
-        max-height: 550px;
+        height: 480px; 
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        border-radius: 20px;
-        background: radial-gradient(circle at center, #0a1b35 0%, #020408 100%);
+        border-radius: 15px;
+        background: #020408;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-        perspective: 2000px;
-        margin-bottom: 80px; /* 본문과의 확실한 간격 확보 */
-    }
-
-    .content-wrapper {
-        z-index: 10;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        transform-style: preserve-3d;
-    }
-
-    /* === 사이버네틱 큐브 (크기 최적화) === */
-    .digital-cube {
-        width: 140px;
-        height: 140px;
-        position: relative;
-        transform-style: preserve-3d;
-        animation: rotateCyberCube 20s infinite linear;
         margin-bottom: 40px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     }
 
-    .cube-core {
-        position: absolute;
-        width: 50px; height: 50px;
-        top: 45px; left: 45px;
-        background: #fff;
-        border-radius: 50%;
-        filter: blur(15px);
-        box-shadow: 0 0 50px #3fbbef, 0 0 80px #fff;
-        opacity: 0.9;
-        animation: corePulse 0.1s infinite alternate;
-    }
+    .content-wrapper { z-index: 10; display: flex; flex-direction: column; align-items: center; transform-style: preserve-3d; }
 
-    .cube-face {
-        position: absolute;
-        width: 140px;
-        height: 140px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-sizing: border-box;
-        background: 
-            linear-gradient(rgba(63, 187, 239, 0.15) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(63, 187, 239, 0.15) 1px, transparent 1px),
-            rgba(10, 25, 47, 0.8);
-        background-size: 15px 15px;
-        border: 1.5px solid rgba(63, 187, 239, 0.5);
-        backdrop-filter: blur(4px);
-        overflow: hidden;
-    }
+    /* 큐브 디자인 */
+    .digital-cube { width: 130px; height: 130px; position: relative; transform-style: preserve-3d; animation: rotateCyberCube 20s infinite linear; margin-bottom: 30px; }
+    .cube-core { position: absolute; width: 40px; height: 40px; top: 45px; left: 45px; background: #fff; border-radius: 50%; filter: blur(15px); box-shadow: 0 0 50px #3fbbef; opacity: 0.8; }
+    .cube-face { position: absolute; width: 130px; height: 130px; display: flex; align-items: center; justify-content: center; background: rgba(10, 25, 47, 0.85); border: 1.5px solid rgba(63, 187, 239, 0.5); box-sizing: border-box; }
+    .cube-face span { font-family: monospace; font-weight: 900; font-size: 15px; color: #fff; text-shadow: 0 0 5px #3fbbef; }
 
-    .cube-face span {
-        font-family: 'Courier New', monospace;
-        font-weight: 900;
-        font-size: 16px;
-        color: #fff;
-        text-shadow: 0 0 5px #3fbbef;
-        transform: translateZ(15px);
-    }
+    /* 큐브 조립 */
+    .face-front { transform: translateZ(65px); }
+    .face-back { transform: rotateY(180deg) translateZ(65px); }
+    .face-right { transform: rotateY(90deg) translateZ(65px); }
+    .face-left { transform: rotateY(-90deg) translateZ(65px); }
+    .face-top { transform: rotateX(90deg) translateZ(65px); }
+    .face-bottom { transform: rotateX(-90deg) translateZ(65px); }
 
-    /* 면 조립 (140px 기준 70px 이동) */
-    .face-front  { transform: translateZ(70px); }
-    .face-back   { transform: rotateY(180deg) translateZ(70px); }
-    .face-right  { transform: rotateY(90deg) translateZ(70px); }
-    .face-left   { transform: rotateY(-90deg) translateZ(70px); }
-    .face-top    { transform: rotateX(90deg) translateZ(70px); }
-    .face-bottom { transform: rotateX(-90deg) translateZ(70px); }
+    @keyframes rotateCyberCube { 0% { transform: rotateX(0deg) rotateY(0deg); } 100% { transform: rotateX(360deg) rotateY(720deg); } }
 
-    @keyframes rotateCyberCube {
-        0%   { transform: rotateX(0deg) rotateY(0deg); }
-        100% { transform: rotateX(360deg) rotateY(720deg); }
-    }
-    @keyframes corePulse {
-        0% { transform: scale(0.98); opacity: 0.8; }
-        100% { transform: scale(1.02); opacity: 1; }
-    }
-
-    .sub-title-main {
-        font-size: 2rem;
-        font-weight: 800;
-        text-shadow: 0 0 20px rgba(63, 187, 239, 0.6);
-        margin-top: 10px;
-        color: #fff;
-    }
-
-    /* === 하단 떨림 방지 섹션 === */
-    .content-footer-spacer {
-        height: 100px;
-        width: 100%;
-        display: block;
-    }
+    .sub-title-main { font-size: 2rem; font-weight: 800; text-shadow: 0 0 15px rgba(63, 187, 239, 0.6); color: #fff; margin: 0; }
 </style>
 
 <div id="vanta-bg">
     <div class="content-wrapper">
-        <img src="logo.png" style="width:130px; margin-bottom:30px; filter: drop-shadow(0 0 8px #3fbbef);" alt="HIKVISION">
-
+        <img src="logo.png" style="width:120px; margin-bottom:20px; filter: drop-shadow(0 0 8px #3fbbef);" alt="HIKVISION">
         <div class="digital-cube">
             <div class="cube-core"></div>
             <div class="cube-face face-front"><span>HIKVISION</span></div>
@@ -3684,7 +3610,6 @@
             <div class="cube-face face-top"><span>HIKVISION</span></div>
             <div class="cube-face face-bottom"><span>HIKVISION</span></div>
         </div>
-
         <p class="sub-title-main">기술 지원 센터</p>
     </div>
 </div>
@@ -3695,14 +3620,9 @@
 <script>
     VANTA.NET({
         el: "#vanta-bg",
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        color: 0x3fbbef,
-        backgroundColor: 0x020408,
-        points: 12.00,
-        maxDistance: 22.00,
-        spacing: 18.00
+        mouseControls: true, touchControls: true,
+        color: 0x3fbbef, backgroundColor: 0x020408,
+        points: 12.00, maxDistance: 20.00, spacing: 18.00
     });
 </script>
 
