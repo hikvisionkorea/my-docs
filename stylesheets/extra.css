@@ -2,30 +2,34 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 body, input { font-family: "Pretendard", sans-serif !important; }
 
-/* 2. 화면 전체 너비 확장 (98% 사용) */
+/* 2. 화면 전체 너비 98% 확장 */
 .md-grid {
   max-width: 98% !important;
 }
 
-/* 3. [핵심] 좌측 메뉴 영역(사이드바) 너비 대폭 확장 */
-/* 초록색 1번 선을 2번 위치까지 밀어내는 설정입니다 */
+/* 3. [해결] 좌측 사이드바 자체의 너비 확보 */
+/* 초록색+파란색 박스를 합친 만큼 넉넉하게 넓혔습니다 */
 :root {
-  --md-sidebar-width: 28rem !important; /* 기존보다 훨씬 넓게 설정 */
+  --md-sidebar-width: 35rem !important; 
 }
 
-/* 4. 좌측 메뉴 글자 제약 해제 */
+/* 4. [해결] 글자가 파란색 공백까지 한 줄로 쭉 이어지게 설정 */
 .md-nav__link,
 .md-nav__link .md-ellipsis,
 .md-nav__link span {
-  white-space: normal !important;      /* 줄바꿈 허용 */
+  white-space: normal !important;      /* 줄바꿈 허용 (공간 부족할 때만) */
+  display: block !important;           /* 영역 전체 사용 */
   overflow: visible !important;        /* 숨김 해제 */
-  text-overflow: clip !important;      /* 말줄임표 제거 */
-  word-break: keep-all !important;     /* 한글 단어 단위 줄바꿈으로 깔끔하게 */
-  line-height: 1.5 !important;         /* 가독성을 위한 줄 간격 */
-  max-width: none !important;          /* 너비 제한 완전 해제 */
+  text-overflow: clip !important;      /* 말줄임표(...) 제거 */
+  word-break: keep-all !important;     /* 한글 단어 단위로 예쁘게 줄바꿈 */
+  line-height: 1.5 !important;
+  max-width: none !important;          /* 글자 너비 제한 완전 해제 */
 }
 
-/* 5. 사이드바 내부 컨텐츠가 좁게 갇히지 않도록 수정 */
+/* 사이드바 내부 컨텐츠가 좁은 폭에 갇히지 않도록 강제 수정 */
 .md-sidebar--primary {
   width: var(--md-sidebar-width) !important;
+}
+.md-sidebar--primary .md-nav {
+  width: 100% !important;
 }
