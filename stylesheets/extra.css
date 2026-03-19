@@ -1,61 +1,76 @@
-/* 1. 기본 폰트 및 변수 설정 */
+/* 1. 기본 설정 및 변수 */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 :root {
   --md-primary-fg-color: #B71C1C;
-  --md-sidebar-width: 15.5rem !important; /* 사이드바 너비 최적화 */
+  /* 왼쪽 사이드바 너비: 빨간 라인 위치에 맞춰 19rem으로 확장 */
+  --md-sidebar-width: 19rem !important;
 }
 
 body, input { font-family: "Pretendard", sans-serif !important; }
 
-/* 2. 가로 폭 확장 및 양옆 공백 제거 */
+/* 2. 전체 레이아웃 폭 확장 */
 .md-grid {
-  max-width: 98% !important; /* 전체 화면 거의 다 사용 */
+  max-width: 98% !important;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* 3. 레이아웃 안정화 (사이드바와 본문 분리) */
+/* 3. 상단 탭(메뉴) 가독성 및 2줄 처리 */
+.md-tabs {
+  background-color: #A50000 !important;
+  height: auto !important; /* 내용에 따라 높이 자동 조절 */
+  padding: 5px 0 !important;
+}
+
+.md-tabs__list {
+  display: flex !important;
+  flex-wrap: wrap !important; /* 공간 부족 시 자동으로 다음 줄 이동 */
+  gap: 5px 15px; /* 메뉴 간 간격 */
+  justify-content: flex-start;
+}
+
+.md-tabs__item {
+  margin: 2px 0 !important;
+}
+
+.md-tabs__link {
+  font-size: 0.9rem !important; /* 글자 크기 확대 */
+  font-weight: 600 !important;
+  opacity: 1 !important; /* 글자 선명도 최대 */
+  padding: 5px 10px !important;
+  white-space: nowrap;
+}
+
+/* 4. 왼쪽 사이드바 디자인 및 가독성 */
 @media screen and (min-width: 76.25em) {
   .md-sidebar--primary {
-    width: var(--md-sidebar-width) !important;
+    width: 19rem !important; /* 확장된 너비 적용 */
   }
 
   .md-content {
-    margin-left: 0.5rem !important; /* 사이드바와의 미세 간격 */
+    margin-left: 1rem !important;
   }
 }
 
-/* 4. 상단 탭/헤더 가림 현상 방지 */
-.md-header {
-  position: sticky !important;
-  top: 0;
-  z-index: 3;
-  background-color: #A50000 !important;
+.md-nav__link {
+  font-size: 0.85rem !important; /* 사이드바 글자 크기도 살짝 확대 */
+  line-height: 1.5 !important;
+  padding: 0.6rem 0.8rem !important;
+  white-space: normal !important; /* 긴 제목은 자연스럽게 줄바꿈 */
 }
 
-.md-tabs {
-  background-color: #A50000 !important;
-  z-index: 2;
-}
-
-/* 5. 스크롤 떨림 방지 (핵심: 스크롤바 공간 상시 확보) */
+/* 5. 스크롤바 위치 및 떨림 방지 고정 */
 html {
-  overflow-y: scroll; /* 스크롤바가 생기고 없어질 때의 너비 변화를 원천 차단 */
+  overflow-y: scroll;
 }
 
 .md-main__inner {
-  padding-bottom: 5rem !important; /* 하단 여백 충분히 확보 */
-}
-
-/* 6. 메뉴 가독성 (이미지 참고 반영) */
-.md-nav__link {
-  font-size: 0.75rem !important;
-  padding: 0.5rem 0.6rem !important;
-  line-height: 1.4;
+  padding-bottom: 10rem !important;
 }
 
 .md-nav__link--active {
   font-weight: bold;
+  background-color: rgba(183, 28, 28, 0.08) !important;
   color: #B71C1C !important;
 }
