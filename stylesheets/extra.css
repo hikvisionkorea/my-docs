@@ -3,81 +3,77 @@
 
 :root {
   --md-primary-fg-color: #B71C1C;
-  /* 사이드바 너비를 25rem으로 유지 */
-  --md-sidebar-width: 25rem !important;
+  /* 사이드바 너비를 시원하게 확장 */
+  --md-sidebar-width: 26rem !important;
 }
 
 body, input { font-family: "Pretendard", sans-serif !important; }
 
-/* 2. 전체 폭 확장 */
-.md-grid {
-  max-width: 98% !important;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* 3. 상단 탭 메뉴 가독성 */
+/* 2. 상단 탭(메뉴) 꼬임 방지 및 2줄 정렬 */
 .md-tabs {
   background-color: #A50000 !important;
-  height: auto !important;
-  padding: 5px 0 !important;
+  height: auto !important; /* 높이 고정 해제 */
+  padding: 10px 0 !important;
 }
 
 .md-tabs__list {
   display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 5px 15px;
+  flex-wrap: wrap !important; /* 공간 부족 시 다음 줄로 */
+  gap: 8px 20px !important;
+  justify-content: flex-start !important;
+  margin: 0 20px !important;
 }
 
 .md-tabs__link {
-  font-size: 0.95rem !important;
+  font-size: 1rem !important; /* 글자 크게 */
   font-weight: 700 !important;
   opacity: 1 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
 }
 
-/* 4. [해결] 사이드바 글자 잘림(...) 현상 완전 제거 */
+/* 3. [완결] 사이드바 글자 잘림(...) 및 2줄 현상 완전 해결 */
 @media screen and (min-width: 76.25em) {
   .md-sidebar--primary, 
   .md-sidebar--primary .md-sidebar__inner {
-    width: 25rem !important;
+    width: 26rem !important;
   }
-
   .md-content {
-    margin-left: 1.5rem !important;
+    margin-left: 2rem !important;
   }
 }
 
 .md-nav__link {
-  font-size: 0.9rem !important;
-  line-height: 1.6 !important;
-  padding: 0.4rem 0.2rem !important;
+  font-size: 0.95rem !important;
+  line-height: 1.8 !important; /* 줄 간격 여유 있게 */
+  padding: 0.4rem 0 !important;
   
-  /* ★ 핵심: 글자 잘림 방지 설정 ★ */
-  white-space: nowrap !important;     /* 한 줄로 유지 */
-  text-overflow: clip !important;      /* ... 표시를 없애고 끝까지 출력 */
-  overflow: visible !important;       /* 넘치는 글자도 보이게 설정 */
-  max-width: none !important;         /* 테마에서 정한 너비 제한 해제 */
-  display: inline-block !important;   /* 너비 제약을 무시하고 확장 */
+  /* 테마의 글자 제한 설정을 완전히 무력화 */
+  white-space: nowrap !important;
+  display: block !important;
 }
 
-/* 사이드바 내부의 텍스트 컨테이너도 제한 해제 */
-.md-nav__link span {
-  max-width: none !important;
+/* ★ 중요: '...' 표시를 만드는 내부 요소 강제 해제 ★ */
+.md-nav__link span, 
+.md-ellipsis {
+  white-space: nowrap !important;
   overflow: visible !important;
+  text-overflow: clip !important;
+  max-width: none !important;
   display: inline !important;
 }
 
-/* 5. 레이아웃 및 스크롤 안정화 */
-html {
-  overflow-y: scroll;
+/* 4. 전체 레이아웃 및 양옆 공백 최적화 */
+.md-grid {
+  max-width: 98% !important;
 }
 
-.md-main__inner {
-  padding-bottom: 12rem !important;
+/* 5. 화면 떨림 방지 고정 */
+html {
+  overflow-y: scroll !important;
 }
 
 .md-nav__link--active {
   font-weight: bold;
-  background-color: rgba(183, 28, 28, 0.1) !important;
   color: #B71C1C !important;
 }
