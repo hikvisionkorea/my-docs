@@ -2,25 +2,30 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 body, input { font-family: "Pretendard", sans-serif !important; }
 
-/* 2. [해결] 좌우 파란색 빈 공간 제거 (모니터 넓이에 맞춰 화면을 98%까지 꽉 채움) */
+/* 2. 화면 전체 너비 확장 (98% 사용) */
 .md-grid {
   max-width: 98% !important;
 }
 
-/* 3. 좌측 사이드바 기본 너비 확장 */
+/* 3. [핵심] 좌측 메뉴 영역(사이드바) 너비 대폭 확장 */
+/* 초록색 1번 선을 2번 위치까지 밀어내는 설정입니다 */
 :root {
-  --md-sidebar-width: 23rem !important;
+  --md-sidebar-width: 28rem !important; /* 기존보다 훨씬 넓게 설정 */
 }
 
-/* 4. [해결] 좌측 메뉴 글자 잘림 방지 (글자가 길면 자르지 않고 다음 줄로 넘겨서 모두 보여줌) */
+/* 4. 좌측 메뉴 글자 제약 해제 */
 .md-nav__link,
 .md-nav__link .md-ellipsis,
 .md-nav__link span {
-  white-space: normal !important;      /* 한 줄 고정을 풀고 줄바꿈 허용 */
-  overflow: visible !important;        /* 숨김 처리 해제 */
-  text-overflow: clip !important;      /* '...' 표시 완전 제거 */
-  word-break: break-word !important;   /* 단어가 길어도 잘리지 않고 넘어가게 처리 */
-  height: auto !important;
-  line-height: 1.4 !important;         /* 줄바꿈 시 글자 위아래 간격 확보 */
-  max-width: 100% !important;
+  white-space: normal !important;      /* 줄바꿈 허용 */
+  overflow: visible !important;        /* 숨김 해제 */
+  text-overflow: clip !important;      /* 말줄임표 제거 */
+  word-break: keep-all !important;     /* 한글 단어 단위 줄바꿈으로 깔끔하게 */
+  line-height: 1.5 !important;         /* 가독성을 위한 줄 간격 */
+  max-width: none !important;          /* 너비 제한 완전 해제 */
+}
+
+/* 5. 사이드바 내부 컨텐츠가 좁게 갇히지 않도록 수정 */
+.md-sidebar--primary {
+  width: var(--md-sidebar-width) !important;
 }
