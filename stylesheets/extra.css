@@ -1,23 +1,26 @@
-/* 1. 폰트 설정 */
+/* 1. 기본 폰트 설정 */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 body, input { font-family: "Pretendard", sans-serif !important; }
 
-/* 2. 좌측 사이드바 너비 확장 (이 수치를 키우면 우측 빈 공간까지 넓어집니다) */
+/* 2. [해결] 좌우 파란색 빈 공간 제거 (모니터 넓이에 맞춰 화면을 98%까지 꽉 채움) */
+.md-grid {
+  max-width: 98% !important;
+}
+
+/* 3. 좌측 사이드바 기본 너비 확장 */
 :root {
-  --md-sidebar-width: 24rem !important; 
+  --md-sidebar-width: 23rem !important;
 }
 
-/* 3. 좌측 메뉴 한 줄 고정 및 잘림(...) 방지 */
-.md-nav__link {
-  white-space: nowrap !important; /* 줄바꿈 금지 */
-}
-
-/* 테마 내부에서 강제로 글자를 자르는 속성 무력화 */
+/* 4. [해결] 좌측 메뉴 글자 잘림 방지 (글자가 길면 자르지 않고 다음 줄로 넘겨서 모두 보여줌) */
+.md-nav__link,
 .md-nav__link .md-ellipsis,
 .md-nav__link span {
-  white-space: nowrap !important;
-  overflow: visible !important;
-  text-overflow: clip !important; /* '...' 표시 삭제 */
-  max-width: none !important; /* 너비 제한 해제 */
-  display: inline-block !important;
+  white-space: normal !important;      /* 한 줄 고정을 풀고 줄바꿈 허용 */
+  overflow: visible !important;        /* 숨김 처리 해제 */
+  text-overflow: clip !important;      /* '...' 표시 완전 제거 */
+  word-break: break-word !important;   /* 단어가 길어도 잘리지 않고 넘어가게 처리 */
+  height: auto !important;
+  line-height: 1.4 !important;         /* 줄바꿈 시 글자 위아래 간격 확보 */
+  max-width: 100% !important;
 }
